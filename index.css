@@ -1,0 +1,431 @@
+.body{
+    margin: 0;
+    padding: 0;
+}
+.info-bar{
+    height: 50px;
+    border-bottom: 1px solid #F2EFE5;
+}
+.social-icons span:hover{
+    transform: scale(1.3);
+    transition: transform 0.2s;
+}
+.info-icons span:hover{
+    transform: scale(1.3);
+    transition: transform 0.2s;
+}
+.info-icons p{
+    font-size: 0.9rem;
+    font-weight: 400;
+
+}
+.navbar-container .row{
+    height: 80px;
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+ }
+    /* Remove delay on hover */
+.dropdown-menu {
+        margin-top: 0;
+        transition: all 0.5s ease-in-out;
+}  
+.dropdown-toggle{
+    text-decoration: none;
+    color: black;
+}
+.nav-head{
+    font-family: "Roboto Slab", serif;
+    font-size: 2rem;
+}
+.dropdown-item:active {
+    background-color: white;
+    color: black; /* Adjust text color for visibility */
+  }
+  
+.nav-items,.btn,.dropdown-item{
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.nav-items{
+    height: 80px;
+}
+
+.dropdown .dropdown-menu{
+    margin-top: 27px;
+    border: 1px solid white;
+    box-shadow: 1px 0px 30px 0px rgba(192.3921875, 192.3921875, 192.3921875, 0.3);
+}
+.btn{
+    border: 1px solid #A8854E;
+    border-radius: 20px;
+    padding: 10px 30px;
+}
+.btn:focus, .btn:active {
+    box-shadow: none !important;
+    outline: none !important; /* Optional: Removes the outline */
+  }
+.btn i{
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.navbar-container a{
+    text-decoration: none;
+    color: black;
+
+}
+.navbar-container a:hover{
+    color: #A8854E;
+}
+.video-container{
+    height: 750px;
+}
+.makka-video{
+    height: 100%;
+    background-color: var(--e-global-color-e9c5ff0);
+    background: url("https://site.sociolib.com/tawaf/wp-content/uploads/sites/10/2023/11/22.jpg") 50% 50%;
+    background-size: cover;
+  
+}
+.video-container .para{
+    position: absolute;
+    top: 15%;
+    left: 14%;
+    color: white;
+    font-family: "Fraunces", serif;
+    font-size: 7rem;
+    font-weight: 500;
+    line-height: 130px;
+    width: 900px;
+    z-index: 3;
+}
+.arab-para{
+    font-family: "Gideon Roman", serif;
+    position: absolute;
+    color: white;
+    font-size: 1.5rem;
+    top: 7%;
+    left: 45%;
+    z-index: 4;
+}
+.makka-video::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1; /* Place it below other content */
+}
+.start-btn {
+    position: absolute;
+    bottom: 40%;
+    left: 40%;
+    z-index: 4;
+}
+.start-btn button{
+    border: 1px solid #A8854E;
+    background-color: #A8854E;
+    color: white;
+    padding: 10px 30px;
+    border-radius:30px ;
+}
+.feature-container{
+    position: relative;
+}
+.feature-container .head{
+    font-family: "Fraunces", serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+
+}
+.feature-container .text{
+    font-weight: 600;
+}
+.feature-container i{
+    font-size: 32px;
+}
+.feature-container .row{
+    position: absolute;
+    top: -200px;
+    width: 100%;
+    height: 250px;
+    color: white;
+    z-index: 10;
+    border-radius: 50px;
+    border: 1px solid white;
+}
+.feature-container .column{
+    border-right: 1px solid white;
+}
+/* package-container */
+.package-container{
+    margin-bottom: 120px;
+}
+.head{
+     font-size: 5vw;
+      font-family: "Merriweather", serif;
+}
+.text{
+    font-size: 18px;
+    font-weight: 500;
+    font-family: "Heebo", sans-serif;
+}
+.package-container .card-title{
+    font-family: "Fraunces", serif;
+    font-size: 1.5rem;
+     
+}
+.card-btn{
+    border: 1px solid #A8854E;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    color: black;
+    padding: 10px 40px;
+    
+}
+.card-btn:hover{
+    color: black;
+}
+.card{
+   width: 100%;
+   height: 430px;
+}
+/* service-container */
+.service-container img{
+    height: 450px;
+    width: 100%;
+}
+.service-container{
+      height: 800px;
+      background-color: rgb(247,247,245);
+      padding-top: 100px;
+}
+.img-cont-1{
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    width: 300px;
+    border: 1px solid white;
+    background-color: white;
+    color: black;
+    padding: 10px;
+}
+.img-cont-1 .col-head{
+    font-size: 1.8rem;
+    font-family: "Fraunces", serif;
+}
+.img-cont-1 .col-text{
+    font-family: "Heebo", sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+}
+.img-cont-1 i {
+    font-size: 30px;
+    transform: rotate(-45deg); 
+ }
+
+ /* feature-container */
+ .features-container{
+    margin-top: 70px;
+    margin-bottom: 10px;
+ }
+.features-container img{
+    width: 100%;
+
+}
+.feature-row img{
+    width: 70px;
+}
+.feature-row .head{
+    font-family: "Fraunces", serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.feature-row .text{
+    font-size: 17px;
+    font-weight: 400;
+
+}
+/* cuarosal-container */
+.carousal-container{
+    background-image: url("man.jpg");
+    background-position: center;
+    height: 500px;
+    /* margin-bottom: 50px;  */
+}
+.carousel {
+    width: 500px;
+    left: 20px;
+    top: 20px;
+    border:none;
+    border-radius: 20px;
+    box-shadow: -6px 0px 0px 0px rgba(180.96093750000003, 175.6501273777174, 175.6501273777174, 0.15);
+}
+.carousel-inner img{
+    border-radius: 20px;
+}
+.carousel-inner{
+    width: 100%;
+    
+}
+.carousel-caption {
+    width: 430px;
+    left: 20px;
+    color: black;
+  }
+.carousel-caption .para{
+    font-family: "Fraunces", serif;
+    font-size:1.5rem;
+}
+.carousel-caption img{
+   width: 100px;
+}
+.carousel-indicators{
+    position: absolute;
+    bottom: -50px;
+   
+}
+.carousel-indicators button{
+    width: 5px;
+    border: none;
+    border-radius: 10px;
+}
+.carousel-profile img{
+    width: 50px;
+    border: none;
+    border-radius: 30px;
+}
+.profile-head{
+    font-size: 20px;
+    font-family: "Heebo", sans-serif;
+}
+.profile-text{
+    font-size: 10px;
+}
+.quote img{
+    width: 30px;
+    color: #A8854E;
+}
+/* artical-container */
+.easy-process{
+    position: relative;
+    height: 700px;
+    margin-top: 100px;
+   
+}
+.img-1{
+    position: absolute;
+    top: 290px;
+    left: 70px;
+    width: 120px;
+    z-index: 4;
+}
+.img-2{
+    position: absolute;
+    top: 90px;
+    left: 0;
+    width: 300px;
+}
+.img-3{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 550px;
+}
+.easy-process .row .head{
+    font-family: "Fraunces", serif;
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+.easy-process .text{
+    font-family: "Heebo", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+} 
+.number{
+    font-size: 24px;
+    font-weight: 500;
+}
+/* ARTICAL-CONTAINER */
+.artical-container{
+    background-color:rgb(247,247,245) ;
+    padding-top: 100px;
+    height: 750px;
+}
+.artical-container .card{
+    width: 100%;
+    height: auto;
+    border: none;
+    background: transparent;
+    overflow: hidden; /* Ensures the image stays within the card boundary */
+    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transitions */
+  
+}
+.card:hover .art-img {
+    transform: scale(1.05) rotate(2deg); /* Scales and rotates the image */
+    transition: transform 0.3s ease; /* Smooth image animation */
+  }
+.artical-container .card-text{
+    font-family: "Fraunces", serif;
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+.card:hover .artical-text{
+    color: #A8854E; /* Changes text color on hover */
+    transition: color 0.3s ease; /* Smooth text animation */
+  }
+  
+  /* contact-containers */
+
+.contact-container{
+    padding-top: 100px;
+   height: 400px;
+   background-color: black;
+   
+}
+.heading p{
+    color: white;
+}
+.menu a{
+    font-family: "Heebo", sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    text-decoration: none;
+    color: white;
+}
+.links a{
+    font-family: "Heebo", sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    text-decoration: none;
+    color: white;
+}
+.office a{
+    font-family: "Heebo", sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+}
+.office-text{
+    font-family: "Heebo", sans-serif;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    font-size: 16px;
+    color: white;
+}
+.contact-container .head-1{
+    font-family: "Heebo", sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color: white;
+}

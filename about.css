@@ -1,0 +1,144 @@
+.about-container{
+    position: relative;
+    height: 450px;
+    margin-bottom: 50px;
+    background: url("about-img.png");
+    background-position: center;
+    background-size: 100% 450px;
+}
+.about-container::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1; /* Place it below other content */
+
+}
+.abt-head{
+    position: absolute;
+    top: 39%;
+    left: 35%;
+    color: white;
+    font-family: "Fraunces", serif;
+    font-size: 5rem;
+    font-weight: 500;
+    line-height: 130px;
+    z-index: 3;
+}
+.abt-para{
+    position: absolute;
+    bottom: 15%;
+    left: 28%;
+    color: white;
+    font-family: "heebo", serif;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 130px;
+    z-index: 3;
+}
+.abt-arab{
+    font-family: "Gideon Roman", serif;
+    position: absolute;
+    color: white;
+    font-size: 1.5rem;
+    top: 27%;
+    left: 44%;
+    z-index: 4;
+}
+/* company-contanier */
+.company-container{
+    margin-bottom: 50px;
+}
+.company-para{
+    font-size: 16px ;
+    font-family: "heebo",sans-serif;
+    margin-top: 15px;
+    
+}
+.com-span{
+    font-size: 3rem;
+    font-weight: 500;
+    
+}
+.company-para-2{
+    font-size: 24px;
+    font-family: "Fraunces", serif;
+    font-weight: 500;
+}
+.company-profile img{
+    width: 70px;
+    height: 70px;
+    border: none;
+    border-radius: 50px;
+}
+.profile-text{
+    font-family: "heebo",sans-serif;
+    font-size: 17px;
+}
+.com-img img{
+    width: 100%;
+}
+.features-container-1{
+    position: relative;
+    height: 450px;
+    margin-bottom: 50px;
+    background: url("featutes-img.png");
+    background-position: center;
+    background-size: 100% 450px;
+
+}
+.features-container-1::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1; /* Place it below other content */
+}
+.packages-container-1{
+    position: relative;
+    height: 450px;
+    margin-bottom: 50px;
+    background: url("https://site.sociolib.com/tawaf/wp-content/uploads/sites/10/2023/11/22.jpg") 50% 50%;
+    background-position: center;
+    background-size: 100% 450px;
+}
+.packages-container-1::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1; /* Place it below other content */
+}
+/* serives-container */
+.service-container-1{
+    height: auto;
+    margin-bottom: 80px;
+    background-color: white;
+}
+.services-container-1{
+    position: relative;
+    height: 450px;
+    margin-bottom: 50px;
+    background: url("38.png");
+    background-position: center;
+    background-size: 100% 450px;
+}
+.services-container-1::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1; /* Place it below other content */
+}
