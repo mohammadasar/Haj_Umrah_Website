@@ -1,4 +1,4 @@
-.body{
+body{
     margin: 0;
     padding: 0;
 }
@@ -15,12 +15,12 @@
     transition: transform 0.2s;
 }
 .info-icons p{
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 400;
 
 }
 .navbar-container .row{
-    height: 80px;
+    height: 60px;
 }
 .dropdown:hover .dropdown-menu {
     display: block;
@@ -44,11 +44,11 @@
   }
   
 .nav-items,.btn,.dropdown-item{
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     font-weight: 500;
 }
 .nav-items{
-    height: 80px;
+    height: 50px;
 }
 
 .dropdown .dropdown-menu{
@@ -59,14 +59,14 @@
 .btn{
     border: 1px solid #A8854E;
     border-radius: 20px;
-    padding: 10px 30px;
+    padding: 6px 20px;
 }
 .btn:focus, .btn:active {
     box-shadow: none !important;
     outline: none !important; /* Optional: Removes the outline */
   }
 .btn i{
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: bold;
 }
 
@@ -79,7 +79,7 @@
     color: #A8854E;
 }
 .video-container{
-    height: 750px;
+    height: 590px;
 }
 .makka-video{
     height: 100%;
@@ -91,13 +91,13 @@
 .video-container .para{
     position: absolute;
     top: 15%;
-    left: 14%;
+    left: 20%;
     color: white;
     font-family: "Fraunces", serif;
-    font-size: 7rem;
+    font-size: 5rem;
     font-weight: 500;
-    line-height: 130px;
-    width: 900px;
+    line-height: 100px;
+    width: 600px;
     z-index: 3;
 }
 .arab-para{
@@ -121,35 +121,39 @@
 }
 .start-btn {
     position: absolute;
-    bottom: 40%;
-    left: 40%;
+    bottom: 43%;
+    left: 44%;
     z-index: 4;
 }
 .start-btn button{
     border: 1px solid #A8854E;
     background-color: #A8854E;
     color: white;
-    padding: 10px 30px;
+    padding: 10px 25px;
     border-radius:30px ;
+    font-size: 12px;
+    font-family: "Heebo", sans-serif;
 }
 .feature-container{
     position: relative;
 }
 .feature-container .head{
     font-family: "Fraunces", serif;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 500;
 
 }
 .feature-container .text{
-    font-weight: 600;
+    font-size: 0.8rem;
+    font-weight: 500;
 }
 .feature-container i{
     font-size: 32px;
+
 }
 .feature-container .row{
     position: absolute;
-    top: -200px;
+    top: -170px;
     width: 100%;
     height: 250px;
     color: white;
@@ -175,17 +179,17 @@
 }
 .package-container .card-title{
     font-family: "Fraunces", serif;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
      
 }
 .card-btn{
     border: 1px solid #A8854E;
     border-radius: 50px;
-    font-size: 15px;
+    font-size: 12px;
     font-weight: 500;
     text-decoration: none;
     color: black;
-    padding: 10px 40px;
+    padding: 12px 35px;
     
 }
 .card-btn:hover{
@@ -208,24 +212,24 @@
 .img-cont-1{
     position: absolute;
     bottom: 20px;
-    left: 30px;
-    width: 300px;
+    left: 24px;
+    width: 250px;
     border: 1px solid white;
     background-color: white;
     color: black;
     padding: 10px;
 }
 .img-cont-1 .col-head{
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-family: "Fraunces", serif;
 }
 .img-cont-1 .col-text{
     font-family: "Heebo", sans-serif;
-    font-size: 17px;
+    font-size: 14px;
     font-weight: 500;
 }
 .img-cont-1 i {
-    font-size: 30px;
+    font-size: 25px;
     transform: rotate(-45deg); 
  }
 
@@ -239,15 +243,15 @@
 
 }
 .feature-row img{
-    width: 70px;
+    width: 60px;
 }
 .feature-row .head{
     font-family: "Fraunces", serif;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 600;
 }
 .feature-row .text{
-    font-size: 17px;
+    font-size: 14px;
     font-weight: 400;
 
 }
@@ -256,10 +260,10 @@
     background-image: url("man.jpg");
     background-position: center;
     height: 500px;
-    /* margin-bottom: 50px;  */
+
 }
 .carousel {
-    width: 500px;
+    width: 400px;
     left: 20px;
     top: 20px;
     border:none;
@@ -274,16 +278,22 @@
     
 }
 .carousel-caption {
-    width: 430px;
-    left: 20px;
+    width: 400px;
+    left: 10px;
     color: black;
   }
 .carousel-caption .para{
     font-family: "Fraunces", serif;
-    font-size:1.5rem;
+    font-size:1.2rem;
+    width: 380px;
+    padding: 5px;
+
 }
 .carousel-caption img{
    width: 100px;
+}
+.carousel-caption .row{
+  width: 380px;
 }
 .carousel-indicators{
     position: absolute;
@@ -301,7 +311,7 @@
     border-radius: 30px;
 }
 .profile-head{
-    font-size: 20px;
+    font-size: 18px;
     font-family: "Heebo", sans-serif;
 }
 .profile-text{
@@ -314,48 +324,48 @@
 /* artical-container */
 .easy-process{
     position: relative;
-    height: 700px;
+    height: 650px;
     margin-top: 100px;
    
 }
 .img-1{
     position: absolute;
-    top: 290px;
-    left: 70px;
+    top: 220px;
+    left: 0px;
     width: 120px;
     z-index: 4;
 }
 .img-2{
     position: absolute;
     top: 90px;
-    left: 0;
-    width: 300px;
+    left: -50px;
+    width: 250px;
 }
 .img-3{
     position: absolute;
-    top: 0px;
+    top: 20px;
     right: 0px;
-    width: 550px;
+    width: 450px;
 }
 .easy-process .row .head{
     font-family: "Fraunces", serif;
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     font-weight: 500;
 }
 .easy-process .text{
     font-family: "Heebo", sans-serif;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 400;
 } 
 .number{
-    font-size: 24px;
-    font-weight: 500;
+    font-size: 18px;
+    font-weight: 400;
 }
 /* ARTICAL-CONTAINER */
 .artical-container{
     background-color:rgb(247,247,245) ;
     padding-top: 100px;
-    height: 750px;
+    height: 600px;
 }
 .artical-container .card{
     width: 100%;
@@ -372,7 +382,7 @@
   }
 .artical-container .card-text{
     font-family: "Fraunces", serif;
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     font-weight: 500;
 }
 .card:hover .artical-text{
@@ -383,8 +393,8 @@
   /* contact-containers */
 
 .contact-container{
-    padding-top: 100px;
-   height: 400px;
+   padding-top: 100px;
+   height: 350px;
    background-color: black;
    
 }
@@ -393,25 +403,25 @@
 }
 .menu a{
     font-family: "Heebo", sans-serif;
-    font-size: 16px;
+    font-size: 0.8rem;
     letter-spacing: 0.5px;
-    font-weight: 500;
+    font-weight: 400;
     text-decoration: none;
     color: white;
 }
 .links a{
     font-family: "Heebo", sans-serif;
-    font-size: 16px;
+    font-size: 0.8rem;
     letter-spacing: 0.5px;
-    font-weight: 500;
+    font-weight: 400;
     text-decoration: none;
     color: white;
 }
 .office a{
     font-family: "Heebo", sans-serif;
-    font-size: 16px;
+    font-size: 0.8rem;
     letter-spacing: 0.5px;
-    font-weight: 500;
+    font-weight: 400;
     cursor: pointer;
     text-decoration: none;
     color: white;
@@ -419,13 +429,13 @@
 .office-text{
     font-family: "Heebo", sans-serif;
     letter-spacing: 0.5px;
-    font-weight: 500;
-    font-size: 16px;
+    font-weight: 400;
+    font-size: 0.8rem;
     color: white;
 }
 .contact-container .head-1{
     font-family: "Heebo", sans-serif;
-    font-weight: 500;
-    font-size: 1rem;
+    font-weight: 400;
+    font-size: 0.8rem;
     color: white;
 }
