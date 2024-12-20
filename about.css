@@ -19,7 +19,7 @@
 }
 .abt-head{
     position: absolute;
-    top: 39%;
+    top: 45%;
     left: 35%;
     color: white;
     font-family: "Fraunces", serif;
@@ -30,13 +30,14 @@
 }
 .abt-para{
     position: absolute;
-    bottom: 15%;
-    left: 28%;
+    bottom: 20%;
+    left: 0%;
     color: white;
+    text-align: center;
     font-family: "heebo", serif;
     font-size: 1rem;
     font-weight: 500;
-    line-height: 130px;
+    /* line-height: 130px; */
     z-index: 3;
 }
 .abt-arab{
@@ -141,4 +142,58 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
     z-index: 1; /* Place it below other content */
+}
+@media screen and (max-width: 576px){
+    .about-container{
+        position: relative;
+        height: 250px;
+        margin-bottom: 50px;
+        background: url("about-img.png");
+        background-position: center;
+        background-size: 100% 250px;
+        
+    }
+    .abt-head{
+        position: absolute;
+        top: 25%;
+        left: 35%;
+        color: white;
+        font-family: "Fraunces", serif;
+        font-size: 2.5rem;
+        font-weight: 500;
+        line-height: 130px;
+        z-index: 3;
+    }
+    .abt-para{
+        position: absolute;
+        bottom: 12%;
+        left: 0%;
+        color: white;
+        text-align: center;
+        font-family: "heebo", serif;
+        font-size: 0.9rem;
+        font-weight: 500;
+        z-index: 3;
+        padding: 0px 50px;
+    }
+    .abt-arab{
+        font-family: "Gideon Roman", serif;
+        position: absolute;
+        color: white;
+        font-size: 1.4rem;
+        top: 20%;
+        left: 42%;
+        z-index: 4;
+    }
+    .company-container{
+          padding: 0px 30px;
+    }
+    .company-para-2{
+        font-size: 18px;
+        font-family: "Fraunces", serif;
+        font-weight: 500;
+    }
+    .company-profile{
+      margin: 20px 0px;
+    }
 }

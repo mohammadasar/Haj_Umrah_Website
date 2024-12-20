@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dropdown with Click Toggle</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+    @media screen and (max-width: 576px){
+    /* Navbar styling */
+    .navbar {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      padding: 10px 20px;
+      z-index: 10;
+    }
+
+    .navbar .brand-logo {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .menu-toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 22px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 100%;
+      height: 4px;
+      background-color: white;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* Sidebar menu */
+    .nav-links {
+      position: absolute;
+      top: 0;
+      left: -300px;
+      height: 100%;
+      width: 250px;
+      background-color: #333;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
+    }
+    .nav-links.show {
+      left: 0;
+    }
+    .home{
+        margin-top: 50px;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 0;
+      font-size: 18px;
+      border-bottom: 1px solid #444;
+    }
+
+    .nav-links a:hover {
+      color: #00d1b2;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown .dropdown-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+      text-decoration: none;
+      padding: 10px 0;
+      font-size: 18px;
+      cursor: pointer;
+      border-bottom: 1px solid #444;
+    }
+
+    .dropdown .dropdown-toggle .icon {
+      margin-left: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .dropdown .dropdown-menu {
+      display: none;
+      flex-direction: column;
+      background-color: #444;
+      padding: 10px;
+      border-radius: 4px;
+      position: relative;
+      margin-top: 5px;
+    }
+
+    .dropdown.show .dropdown-menu {
+      display: flex;
+    }
+
+    .dropdown.show .dropdown-toggle .icon {
+      transform: rotate(180deg);
+    }
+
+    /* Toggle animation */
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+   
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar-for mobile -->
+  <nav class="navbar">
+    <a href="#" class="brand-logo">Logo</a>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <!-- Sidebar Menu -->
+  <div class="nav-links" id="navLinks">
+    <a href="#home" class="home"  onclick="toggleMenu()">HOME</a>
+    <!-- Dropdown for Pages -->
+    <div class="dropdown" id="dropdown">
+      <a class="dropdown-toggle" onclick="toggleDropdown()">
+        PAGES
+        <span class="icon">▼</span>
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#"  onclick="toggleMenu()">SINGLE PACKAGE</a>
+        <a class="dropdown-item" href="about.html"  onclick="toggleMenu()">ABOUT</a>
+        <a class="dropdown-item" href="#"  onclick="toggleMenu()">CONTACT</a>
+        <a class="dropdown-item" href="features.html"  onclick="toggleMenu()">FEATURES</a>
+        <a class="dropdown-item" href="#"  onclick="toggleMenu()">NEWS</a>
+        <a class="dropdown-item" href="#"  onclick="toggleMenu()">BLOG</a>
+        <a class="dropdown-item" href="#"  onclick="toggleMenu()">POST</a>
+      </div>
+    </div>
+    <a href="packages.html"  onclick="toggleMenu()">PACKAGES</a>
+    <a href="services.html"  onclick="toggleMenu()">SERVICES</a>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById('navLinks');
+      const toggle = document.querySelector('.menu-toggle');
+      navLinks.classList.toggle('show');
+      toggle.classList.toggle('active');
+    }
+
+    function toggleDropdown() {
+      const dropdown = document.getElementById('dropdown');
+      dropdown.classList.toggle('show');
+    }
+  </script>
+
+</body>
+</html>
