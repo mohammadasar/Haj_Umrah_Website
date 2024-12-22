@@ -24,7 +24,7 @@
     
     </head>
 <body>
-    <div class="container-fluid" id="home">
+    <div class="container-fluid d-none d-md-block" id="home">
         <div class="row info-bar">
             <div class="col   d-flex flex-row justify-content-start   align-items-center gap-4 info-icons">
                 <div class="d-flex align-items-center gap-2 ps-5">
@@ -45,7 +45,7 @@
         </div>
     </div>   
     <!-- navbar -->
-<div class="container-fluid">
+<div class="container-fluid d-none d-md-block">
     <div class="navbar-container ">
       <div class="row align-items-center  d-flex">
         <!-- Brand Name -->
@@ -82,46 +82,72 @@
       </div>
     </div>
   </div>
+  <!-- Mobile Navbar -->
+<nav class="navbar d-md-none">
+  <a href="#" class="brand-logo">Taj</a>
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</nav>
+<div class="nav-links d-md-none"  id="navLinks">
+  <a href="index.html" class="home" onclick="toggleMenu()">HOME</a>
+  <div class="dropdown-1" id="dropdown">
+    <a class="dropdown-toggle-1" onclick="toggleDropdown()" >PAGES <span class="icon">▼</span></a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#" onclick="toggleMenu()">SINGLE PACKAGE</a>
+      <a class="dropdown-item" href="about.html" onclick="toggleMenu()">ABOUT</a>
+      <a class="dropdown-item" href="contact.html" onclick="toggleMenu()">CONTACT</a>
+      <a class="dropdown-item" href="features.html" onclick="toggleMenu()">FEATURES</a>
+      <a class="dropdown-item" href="#" onclick="toggleMenu()">NEWS</a>
+      <a class="dropdown-item" href="#" onclick="toggleMenu()">BLOG</a>
+      <a class="dropdown-item" href="#" onclick="toggleMenu()">POST</a>
+    </div>
+  </div>
+  <a href="packages.html" onclick="toggleMenu()">PACKAGES</a>
+  <a href="services.html" onclick="toggleMenu()">SERVICES</a>
+</div>
   
-    <!-- contact-container -->
-    <div class="container-fluid contact-container">
-        <div class="row">
-          <div class="col-12 col-md-3 heading">
-            <p class="nav-head">TAJ</p>
-            <p>Powered by SocioLib.</p>
-          </div>
-          <div class="col-12 col-md-4 pe-5 office">
-            <p class="head-1">OFFICE</p>
-            <P class="office-text">Tawaf Corp, Amphitheatre Parkway, Mountain View, California, 94043</P>
-            <div class="d-flex flex-column gap-2">
-              <a class="mail"><i class="fa-regular fa-envelope me-3"></i>itsmemdasar4415@gmail.com</a>
-              <a class="mail"><i class="fa-solid fa-phone-volume me-3"></i>91-78907643896</a>
-            </div>
-           
-          </div>
-          <div class="col-12 col-md-2">
-            <p class="head-1">MENU</p>
-            <div class="d-flex flex-column menu">
-            <a href="">Services</a>
-            <a href="">Features</a>
-            <a href="">Testimonials</a>
-            <a href="">Packages</a>
-            <a href="">Partners</a>
-          </div>
-
-          </div>
-          <div class="col-12 col-md-3 ">
-            <p class="head-1">LINKS</p>
-            <div class="d-flex flex-column links">
-            <a href="">About Us</a>
-            <a href="">Contact</a>
-            <a href="">Help Center</a>
-            <a href="">Career</a>
-            </div>
-
-          </div>
-        </div>
+   <!-- contact-container -->
+   <div class="container-fluid contact-container ">
+    <div class="row">
+      <div class="col-12 col-md-3 heading">
+        <p class="nav-head">TAJ</p>
+        <p class="office-text">Powered by SocioLib.</p>
       </div>
+      <div class="col-12 col-md-4 pe-5 office">
+        <p class="head-1">OFFICE</p>
+        <P class="office-text">Tawaf Corp, Amphitheatre Parkway, Mountain View, California, 94043</P>
+        <div class="d-flex flex-column gap-2">
+          <a class="mail"><i class="fa-regular fa-envelope me-3"></i>itsmemdasar4415@gmail.com</a>
+          <a class="mail"><i class="fa-solid fa-phone-volume me-3"></i>91-78907643896</a>
+        </div>
+       
+      </div>
+      <div class="col-6 col-md-2 ">
+        <p class="head-1">MENU</p>
+        <div class="d-flex flex-column menu">
+        <a href="">Services</a>
+        <a href="">Features</a>
+        <a href="">Testimonials</a>
+        <a href="">Packages</a>
+        <a href="">Partners</a>
+      </div>
+
+      </div>
+      <div class="col-6 col-md-3 ">
+        <p class="head-1">LINKS</p>
+        <div class="d-flex flex-column links">
+        <a href="">About Us</a>
+        <a href="">Contact</a>
+        <a href="">Help Center</a>
+        <a href="">Career</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
     
 </body>
 </html>
