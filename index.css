@@ -589,13 +589,16 @@ body{
     }
     .card{
         width: 100%;
-        height: 490px;
+        height: auto;
         margin-bottom: 20px;
      }
      .card-btn{
         font-size: 18px;
         font-weight: 500;
-        padding: 15px 70px;
+        width: 40%;
+        /* padding: 15px 70px; */
+        padding: 15px 20px;
+        /* margin-bottom: 50px; */
      }
 /* servicce-container */
    .service-container{

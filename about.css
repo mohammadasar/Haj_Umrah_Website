@@ -211,4 +211,20 @@
     .features-container .head{
         padding: 0px;
     }
+    .services-container-1{
+        position: relative;
+        height: 300px;
+        margin-bottom: 50px;
+        background: url("38.png");
+        background-position: center;
+        background-size: 100% 300px;
+    }
+    .packages-container-1{
+        position: relative;
+        height: 300px;
+        margin-bottom: 50px;
+        background: url("https://site.sociolib.com/tawaf/wp-content/uploads/sites/10/2023/11/22.jpg") 50% 50%;
+        background-position: center;
+        background-size: 100% 300px;
+    }
 }

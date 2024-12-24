@@ -24,7 +24,7 @@
     
     </head>
 <body>
-    <div class="container-fluid" id="home">
+    <div class="container-fluid d-none d-md-block" id="home">
         <div class="row info-bar">
             <div class="col   d-flex flex-row justify-content-start   align-items-center gap-4 info-icons">
                 <div class="d-flex align-items-center gap-2 ps-5">
@@ -45,7 +45,7 @@
         </div>
     </div>   
     <!-- navbar -->
-<div class="container-fluid">
+<div class="container-fluid d-none d-md-block">
     <div class="navbar-container ">
       <div class="row align-items-center  d-flex">
         <!-- Brand Name -->
@@ -82,6 +82,32 @@
       </div>
     </div>
   </div>
+  <!-- Mobile Navbar -->
+  <nav class="navbar d-md-none">
+    <a href="#" class="brand-logo">Taj</a>
+    <div class="menu-toggle" onclick="toggleMenu()">
+       <span></span>
+       <span></span>
+       <span></span>
+  </div>
+  </nav>
+<div class="nav-links d-md-none"  id="navLinks">
+<a href="index.html" class="home" onclick="toggleMenu()">HOME</a>
+<div class="dropdown-1" id="dropdown">
+<a class="dropdown-toggle-1" onclick="toggleDropdown()" >PAGES <span class="icon">▼</span></a>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="#" onclick="toggleMenu()">SINGLE PACKAGE</a>
+<a class="dropdown-item" href="about.html" onclick="toggleMenu()">ABOUT</a>
+<a class="dropdown-item" href="contact.html" onclick="toggleMenu()">CONTACT</a>
+<a class="dropdown-item" href="features.html" onclick="toggleMenu()">FEATURES</a>
+<a class="dropdown-item" href="#" onclick="toggleMenu()">NEWS</a>
+<a class="dropdown-item" href="#" onclick="toggleMenu()">BLOG</a>
+<a class="dropdown-item" href="#" onclick="toggleMenu()">POST</a>
+</div>
+</div>
+<a href="packages.html" onclick="toggleMenu()">PACKAGES</a>
+<a href="services.html" onclick="toggleMenu()">SERVICES</a>
+</div>
   <div class="container-fluid p-0">
     <div class="services-container-1">
         <p class="abt-arab">لَبَّيْكَ اللَّهُمَّ لَبَّيْك</p>
@@ -92,35 +118,35 @@
   <!-- SERVICE PAGE -->
   <div class="container-fluid  service-container service-container-1 mt-5">
     <div class="row">
-      <div class="col-12 col-md-4 column position-relative">
+      <div class="col-12 col-md-4 column position-relative mt-5 mt-md-0">
         <img src="ser-img1.png" alt="">
         <div class="img-cont-1">
-          <p class="col-head">Umrah</p>
-          <div class="d-flex">
-            <p class="col-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <div class="d-flex justify-content-center align-items-center w-50"><i class="fa-solid fa-arrow-right"></i> </div>
+          <div class=" row d-flex">
+            <div class=" col-12 col-head">Umrah</div>
+            <div class=" col-12 col-md-8 col-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+            <div class="col-12 col-md-4 col-icon "><i class="fa-solid fa-arrow-right"></i> </div>
           </div>
           
         </div>
       </div>
-      <div class="col-12 col-md-4 column position-relative">
+      <div class="col-12 col-md-4 column position-relative mt-5 mt-md-0">
         <img src="ser-img2.png" alt="">
         <div class="img-cont-1">
-          <p class="col-head">Hajj</p>
-          <div class="d-flex">
-            <p class="col-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <div class="d-flex justify-content-center align-items-center w-50"><i class="fa-solid fa-arrow-right"></i> </div>
+          <div class=" row d-flex">
+            <div class=" col-12 col-head">Umrah</div>
+            <div class=" col-12 col-md-8 col-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+            <div class="col-12 col-md-4 col-icon "><i class="fa-solid fa-arrow-right"></i> </div>
           </div>
           
         </div>
       </div>
-      <div class="col-12 col-md-4 column position-relative">
+      <div class="col-12 col-md-4 column position-relative mt-5 mt-md-0">
         <img src="ser-img3.png" alt="">
         <div class="img-cont-1">
-          <p class="col-head">Tour</p>
-          <div class="d-flex">
-            <p class="col-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <div class="d-flex justify-content-center align-items-center w-50"><i class="fa-solid fa-arrow-right"></i> </div>
+          <div class=" row d-flex">
+            <div class=" col-12 col-head">Umrah</div>
+            <div class=" col-12 col-md-8 col-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+            <div class="col-12 col-md-4 col-icon "><i class="fa-solid fa-arrow-right"></i> </div>
           </div>
         </div>
       </div>
@@ -128,30 +154,30 @@
       <div class="col-12 col-md-4 column position-relative mt-5">
         <img src="35.png" alt="">
         <div class="img-cont-1">
-          <p class="col-head">Visa Processing</p>
-          <div class="d-flex">
-            <p class="col-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <div class="d-flex justify-content-center align-items-center w-50"><i class="fa-solid fa-arrow-right"></i> </div>
+          <div class=" row d-flex">
+            <div class=" col-12 col-head">Umrah</div>
+            <div class=" col-12 col-md-8 col-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+            <div class="col-12 col-md-4 col-icon "><i class="fa-solid fa-arrow-right"></i> </div>
           </div>
         </div>
       </div>
       <div class="col-12 col-md-4 column position-relative mt-5">
         <img src="feature-img.png" alt="">
         <div class="img-cont-1">
-          <p class="col-head">Hotel Booking</p>
-          <div class="d-flex">
-            <p class="col-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <div class="d-flex justify-content-center align-items-center w-50"><i class="fa-solid fa-arrow-right"></i> </div>
+          <div class=" row d-flex">
+            <div class=" col-12 col-head">Umrah</div>
+            <div class=" col-12 col-md-8 col-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+            <div class="col-12 col-md-4 col-icon "><i class="fa-solid fa-arrow-right"></i> </div>
           </div>
         </div>
       </div>
       <div class="col-12 col-md-4 column position-relative mt-5">
         <img src="32.png" alt="">
         <div class="img-cont-1">
-          <p class="col-head">Transportation</p>
-          <div class="d-flex">
-            <p class="col-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <div class="d-flex justify-content-center align-items-center w-50"><i class="fa-solid fa-arrow-right"></i> </div>
+          <div class=" row d-flex">
+            <div class=" col-12 col-head">Umrah</div>
+            <div class=" col-12 col-md-8 col-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+            <div class="col-12 col-md-4 col-icon "><i class="fa-solid fa-arrow-right"></i> </div>
           </div>
         </div>
       </div>
@@ -159,41 +185,41 @@
        <div class="col-12 col-md-4 column position-relative mt-5">
         <img src="13-1.png" alt="">
         <div class="img-cont-1">
-          <p class="col-head">Manasik</p>
-          <div class="d-flex">
-            <p class="col-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <div class="d-flex justify-content-center align-items-center w-50"><i class="fa-solid fa-arrow-right"></i> </div>
+          <div class=" row d-flex">
+            <div class=" col-12 col-head">Umrah</div>
+            <div class=" col-12 col-md-8 col-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+            <div class="col-12 col-md-4 col-icon "><i class="fa-solid fa-arrow-right"></i> </div>
           </div>
         </div>
       </div>
       <div class="col-12 col-md-4 column position-relative mt-5">
         <img src="about-img-1.png" alt="">
         <div class="img-cont-1">
-          <p class="col-head">Guidance</p>
-          <div class="d-flex">
-            <p class="col-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <div class="d-flex justify-content-center align-items-center w-50"><i class="fa-solid fa-arrow-right"></i> </div>
+          <div class=" row d-flex">
+            <div class=" col-12 col-head">Umrah</div>
+            <div class=" col-12 col-md-8 col-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+            <div class="col-12 col-md-4 col-icon "><i class="fa-solid fa-arrow-right"></i> </div>
           </div>
         </div>
       </div>
       <div class="col-12 col-md-4 column position-relative mt-5">
         <img src="34.png" alt="">
         <div class="img-cont-1">
-          <p class="col-head">Accommodation</p>
-          <div class="d-flex">
-            <p class="col-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <div class="d-flex justify-content-center align-items-center w-50"><i class="fa-solid fa-arrow-right"></i> </div>
+          <div class=" row d-flex">
+            <div class=" col-12 col-head">Umrah</div>
+            <div class=" col-12 col-md-8 col-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+            <div class="col-12 col-md-4 col-icon "><i class="fa-solid fa-arrow-right"></i> </div>
           </div>
         </div>
       </div>
     </div>
    </div>
    <!-- contact-container -->
-   <div class="container-fluid contact-container">
+   <div class="container-fluid contact-container ">
     <div class="row">
       <div class="col-12 col-md-3 heading">
         <p class="nav-head">TAJ</p>
-        <p>Powered by SocioLib.</p>
+        <p class="office-text">Powered by SocioLib.</p>
       </div>
       <div class="col-12 col-md-4 pe-5 office">
         <p class="head-1">OFFICE</p>
@@ -204,7 +230,7 @@
         </div>
        
       </div>
-      <div class="col-12 col-md-2">
+      <div class="col-6 col-md-2 ">
         <p class="head-1">MENU</p>
         <div class="d-flex flex-column menu">
         <a href="">Services</a>
@@ -215,7 +241,7 @@
       </div>
 
       </div>
-      <div class="col-12 col-md-3 ">
+      <div class="col-6 col-md-3 ">
         <p class="head-1">LINKS</p>
         <div class="d-flex flex-column links">
         <a href="">About Us</a>
