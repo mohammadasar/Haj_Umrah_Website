@@ -908,7 +908,7 @@ body{
     }
     .feature-container .row {
         position: absolute;
-        top: -630px;
+        top: -600px;
         left: 10%;
         width: 85%;
         height: auto;
@@ -1002,6 +1002,7 @@ body{
     .package-container {
         padding: 0px 20px; /* Adjusted padding */
         margin-bottom: 10px;
+        z-index: 11;
     }
     
     .card {
