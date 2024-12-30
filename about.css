@@ -19,8 +19,8 @@
 }
 .abt-head{
     position: absolute;
-    top: 45%;
-    left: 35%;
+    top: 38%;
+    left: 40%;
     color: white;
     font-family: "Fraunces", serif;
     font-size: 5rem;
@@ -31,7 +31,7 @@
 .abt-para{
     position: absolute;
     bottom: 20%;
-    left: 0%;
+    left: 30%;
     color: white;
     text-align: center;
     font-family: "heebo", serif;
@@ -44,7 +44,7 @@
     font-family: "Gideon Roman", serif;
     position: absolute;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     top: 27%;
     left: 44%;
     z-index: 4;
@@ -52,6 +52,7 @@
 /* company-contanier */
 .company-container{
     margin-bottom: 50px;
+    padding: 0px 60px;
 }
 .company-para{
     font-size: 16px ;
@@ -226,5 +227,89 @@
         background: url("https://site.sociolib.com/tawaf/wp-content/uploads/sites/10/2023/11/22.jpg") 50% 50%;
         background-position: center;
         background-size: 100% 300px;
+    }
+}
+
+
+
+@media screen and (max-width: 425px) {
+    .about-container {
+        position: relative;
+        height: 200px;
+        margin-bottom: 40px;
+        background: url("about-img.png");
+        background-position: center;
+        background-size: 100% 200px;
+    }
+    .abt-head {
+        position: absolute;
+        top: 20%;
+        left: 30%;
+        color: white;
+        font-family: "Fraunces", serif;
+        font-size: 2rem;
+        font-weight: 500;
+        line-height: 100px;
+        z-index: 3;
+    }
+    .abt-para {
+        position: absolute;
+        bottom: 10%;
+        left: 5%;
+        color: white;
+        text-align: center;
+        font-family: "heebo", serif;
+        font-size: 0.8rem;
+        font-weight: 500;
+        z-index: 3;
+        padding: 0px 30px;
+    }
+    .abt-arab {
+        font-family: "Gideon Roman", serif;
+        position: absolute;
+        color: white;
+        font-size: 1.2rem;
+        top: 18%;
+        left: 35%;
+        z-index: 4;
+    }
+    .company-container {
+        padding: 0px 20px;
+    }
+    .company-para-2 {
+        font-size: 16px;
+        font-family: "Fraunces", serif;
+        font-weight: 500;
+    }
+    .company-profile {
+        margin: 15px 0px;
+    }
+    /* features container */
+    .features-container-1 {
+        position: relative;
+        height: 200px;
+        margin-bottom: 40px;
+        background: url("featutes-img.png");
+        background-position: center;
+        background-size: 100% 250px;
+    }
+    .features-container .head {
+        padding: 0px;
+    }
+    .services-container-1 {
+        position: relative;
+        height: 200px;
+        margin-bottom: 0px;
+        background: url("38.png");
+        background-position: center;
+        background-size: 100% 250px;
+    }
+    .packages-container-1 {
+        position: relative;
+        height: 200px;
+        margin-bottom: 40px;
+        background: url("https://site.sociolib.com/tawaf/wp-content/uploads/sites/10/2023/11/22.jpg") 50% 50%;
+        background-position: center;
+        background-size: 100% 250px;
     }
 }
