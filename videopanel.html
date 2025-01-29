@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Management Panel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f3f4f6;
+    }
+
+    .upload-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .upload-container h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .upload-container input,
+    .upload-container button {
+      margin: 10px 0;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .video-list {
+      margin-top: 30px;
+      text-align: left;
+    }
+
+    .video-item {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-item video {
+      display: block;
+      width: 100%;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .video-item input {
+      width: calc(100% - 80px);
+      padding: 5px;
+      margin: 5px 0;
+    }
+
+    .video-item p {
+      margin: 5px 0;
+      font-weight: bold;
+      color: #333;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .upload-container {
+        padding: 15px;
+      }
+
+      .upload-container h2 {
+        font-size: 1.5rem;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+      }
+
+      .video-item {
+        padding: 10px;
+      }
+
+      .video-item p {
+        font-size: 0.9rem;
+      }
+
+      .video-item input {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .video-item button {
+        width: 100%;
+        padding: 10px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="upload-container">
+    <h2>Video Management Panel</h2>
+    <input type="file" id="videoFile" accept="video/*">
+    <button onclick="uploadVideo()">Upload Video</button>
+
+    <div class="video-list" id="videoList">
+      <h3>Uploaded Videos</h3>
+      <ul id="videos" style="list-style-type: none; padding: 0;"></ul>
+    </div>
+  </div>
+
+  <script>
+  async function fetchVideos() {
+  try {
+    const response = await fetch("http://localhost:8080/api/videos/get");
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status} - ${response.statusText}`);
+    }
+
+    const videos = await response.json(); 
+    const videoList = document.getElementById("videos");
+    videoList.innerHTML = ""; 
+
+    videos.forEach(video => {
+      const li = document.createElement("li");
+      li.classList.add("video-item");
+      li.innerHTML = `
+        <video controls>
+          <source src="http://localhost:8080/${video.url}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <button onclick="updateVideo('${video.id}')">Edit</button>
+        <button onclick="deleteVideo('${video.id}')">Delete</button>
+      `;
+      videoList.appendChild(li);
+    });
+  } catch (error) {
+    console.error("Error fetching videos:", error);
+  }
+}
+
+
+    // Upload a new video
+    async function uploadVideo() {
+      const fileInput = document.getElementById('videoFile');
+      const file = fileInput.files[0];
+      if (!file) {
+        alert('Please select a video file!');
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('file', file);
+
+      try {
+        const response = await fetch(baseUrl, {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (response.ok) {
+          alert('Video uploaded successfully!');
+          fileInput.value = ''; // Clear the file input
+          fetchVideos(); // Refresh video list
+        } else {
+          alert('Failed to upload video.');
+        }
+      } catch (error) {
+        console.error('Error uploading video:', error);
+      }
+    }
+
+    // Update a video's title
+    async function updateVideo(id) {
+      const titleElement = document.getElementById(`title-${id}`);
+      const newTitleInput = document.getElementById(`newTitleInput-${id}`);
+
+      if (newTitleInput) {
+        const newTitle = newTitleInput.value.trim();
+        if (!newTitle) {
+          alert('Please enter a valid title.');
+          return;
+        }
+
+        try {
+          const response = await fetch(`${baseUrl}/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: newTitle }),
+          });
+
+          if (response.ok) {
+            alert('Video updated successfully!');
+            titleElement.textContent = `Title: ${newTitle}`;
+            newTitleInput.remove();
+            titleElement.style.display = 'block';
+          } else {
+            alert('Failed to update video.');
+          }
+        } catch (error) {
+          console.error('Error updating video:', error);
+        }
+      } else {
+        const currentTitle = titleElement.textContent.replace('Title: ', '').trim();
+        titleElement.style.display = 'none';
+
+        const inputField = document.createElement('input');
+        inputField.type = 'text';
+        inputField.id = `newTitleInput-${id}`;
+        inputField.value = currentTitle;
+        titleElement.parentElement.insertBefore(inputField, titleElement.nextSibling);
+      }
+    }
+
+    // Delete a video
+    async function deleteVideo(id) {
+      try {
+        const response = await fetch(`${baseUrl}/${id}`, {
+          method: 'DELETE',
+        });
+
+        if (response.ok) {
+          alert('Video deleted successfully!');
+          fetchVideos();
+        } else {
+          alert('Failed to delete video.');
+        }
+      } catch (error) {
+        console.error('Error deleting video:', error);
+      }
+    }
+
+    // Fetch videos on page load
+    document.addEventListener('DOMContentLoaded', fetchVideos);
+  </script>
+</body>
+</html>

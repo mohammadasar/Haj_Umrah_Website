@@ -1,0 +1,113 @@
+<!-- Frontend: HTML -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Upload Panel</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+     <style>
+      /* Frontend: CSS (styles.css) */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.upload-panel {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.upload-panel h1 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+label {
+    font-size: 0.9em;
+    margin-top: 10px;
+    display: block;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+     </style>
+</head>
+<body>
+    <div class="upload-panel">
+        <h1>Upload Card</h1>
+        <form id="cardForm">
+            <label for="image">Card Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+
+            <label for="title1">Title 1:</label>
+            <input type="text" id="title1" name="title1" required>
+
+            <label for="title2">Title 2:</label>
+            <input type="text" id="title2" name="title2" required>
+
+            <label for="title3">Title 3:</label>
+            <input type="text" id="title3" name="title3" required>
+
+            <label for="title4">Title 4:</label>
+            <input type="text" id="title4" name="title4" required> 
+
+            <label for="title5">Title 5:</label>
+            <input type="text" id="title5" name="title5" required>
+
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+
+    <script>
+      // Frontend: JavaScript (script.js)
+document.getElementById('cardForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const response = await fetch('http://localhost:8080/cards/add', {
+        method: 'POST',
+        body: formData,
+    });
+
+    if (response.ok) {
+        alert('Card uploaded successfully!');
+        e.target.reset(); // Reset the form inputs
+    } else {
+        alert('Failed to upload card.');
+    }
+});
+
+    </script>
+</body>
+</html>
