@@ -28,6 +28,20 @@
     line-height: 130px;
     z-index: 3;
 }
+.abt-head-1{
+    position: absolute;
+    text-align: center;
+    width: 80%;
+    top: 38%;
+    left: 10%;
+    color: white;
+    font-family: "Fraunces", serif;
+    font-size: 5rem;
+    font-weight: 500;
+    line-height: 90px;
+    z-index: 3;
+   
+}
 .abt-para{
     position: absolute;
     bottom: 20%;
@@ -145,6 +159,25 @@
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
     z-index: 1; /* Place it below other content */
 }
+.videos-container-1{
+    position: relative;
+    height: 450px;
+    margin-bottom: 50px;
+    background: url("https://site.sociolib.com/tawaf/wp-content/uploads/sites/10/2023/11/41.jpg") 50% 50%;
+    background-position: center;
+    background-size: 100% 450px;
+}
+.videos-container-1::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(84, 85, 81, 0.4); /* Semi-transparent background */
+    z-index: 1; /* Place it below other content */
+}
+
 @media screen and (max-width: 576px){
     .about-container{
         position: relative;
@@ -164,6 +197,18 @@
         font-size: 2.5rem;
         font-weight: 500;
         line-height: 130px;
+        z-index: 3;
+    }
+    .abt-head-1{
+        position: absolute;
+        width: auto;
+        top: 35%;
+        left: 0%;
+        color: white;
+        font-family: "Fraunces", serif;
+        font-size: 2.5rem;
+        font-weight: 500;
+        line-height: 50px;
         z-index: 3;
     }
     .abt-para{
@@ -228,6 +273,13 @@
         background-position: center;
         background-size: 100% 300px;
     }
+    .videos-container-1{
+        position: relative;
+        height: 300px;
+        margin-bottom: 50px;
+        background-position: center;
+        background-size: 100% 300px; 
+    }
 }
 
 
@@ -250,6 +302,18 @@
         font-size: 2rem;
         font-weight: 500;
         line-height: 100px;
+        z-index: 3;
+    }
+    .abt-head-1{
+        position: absolute;
+        width: auto;
+        top: 35%;
+        left: 0%;
+        color: white;
+        font-family: "Fraunces", serif;
+        font-size: 2rem;
+        font-weight: 500;
+        line-height: 30px;
         z-index: 3;
     }
     .abt-para {
@@ -312,4 +376,12 @@
         background-position: center;
         background-size: 100% 250px;
     }
+    .videos-container-1{
+        position: relative;
+        height: 200px;
+        margin-bottom: 40px;
+        background-position: center;
+        background-size: 100% 250px
+    }
+
 }
