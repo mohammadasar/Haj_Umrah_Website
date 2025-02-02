@@ -60,23 +60,31 @@
               PAGES
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">SINGLE PACKAGE</a></li>
               <li><a class="dropdown-item" href="about.html">ABOUT</a></li>
               <li><a class="dropdown-item" href="contact.html">CONTACT</a></li>
               <li><a class="dropdown-item" href="features.html">FEATURES</a></li>
-              <li><a class="dropdown-item" href="#">NEWS</a></li>
-              <li><a class="dropdown-item" href="#">BLOG</a></li>
-              <li><a class="dropdown-item" href="#">POST</a></li>
+              <li><a class="dropdown-item" href="#">VIDEOS</a></li>
             </ul>
           </div>
           <a href="packages.html">PACKAGES</a>
           <a href="services.html">SERVICES</a>
+          <a href="#" id="adminBtn">ADMIN</a>
         </div>
       </div>
       <div class="col text-end">
         <a href="contact.html" class="btn">CONTACT US <i class="bi bi-chevron-right"></i></a>
       </div>
     </div>
+  </div>
+</div>
+<!-- Security Code Modal -->
+<div id="securityModal" class="modal">
+  <div class="modal-content">
+      <h2>Enter Security Code</h2>
+      <input type="password" id="securityCode" placeholder="Enter Code">
+      <p id="errorText" class="error"></p>
+      <button id="submitCode">Submit</button>
+      <button id="closeModal">Cancel</button>
   </div>
 </div>
 
@@ -94,18 +102,18 @@
   <div class="dropdown-1" id="dropdown">
     <a class="dropdown-toggle-1" onclick="toggleDropdown()" >PAGES <span class="icon">▼</span></a>
     <div class="dropdown-menu">
-      <a class="dropdown-item" href="#" onclick="toggleMenu()">SINGLE PACKAGE</a>
       <a class="dropdown-item" href="about.html" onclick="toggleMenu()">ABOUT</a>
       <a class="dropdown-item" href="contact.html" onclick="toggleMenu()">CONTACT</a>
       <a class="dropdown-item" href="features.html" onclick="toggleMenu()">FEATURES</a>
-      <a class="dropdown-item" href="#" onclick="toggleMenu()">NEWS</a>
-      <a class="dropdown-item" href="#" onclick="toggleMenu()">BLOG</a>
-      <a class="dropdown-item" href="#" onclick="toggleMenu()">POST</a>
+      <a class="dropdown-item" href="#" onclick="toggleMenu()">VIDEOS</a>
     </div>
   </div>
   <a href="packages.html" onclick="toggleMenu()">PACKAGES</a>
   <a href="services.html" onclick="toggleMenu()">SERVICES</a>
+  <a href="admin.html" onclick="toggleMenu()">ADMIN</a>
 </div>
+
+
 
 <!-- tawab video -->
  <div class="container-fluid video-container position-relative p-0 m-0">
