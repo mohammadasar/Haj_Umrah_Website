@@ -39,6 +39,7 @@
         }
         .sidebar h2 {
             text-align: center;
+            width: 100%;
             margin-bottom: 20px;
         }
         .sidebar ul {
@@ -73,15 +74,17 @@
         }
 
         /* Collapsible Sidebar for Mobile */
-        @media (max-width: 768px) {
+        @media (max-width: 576px) {
             .sidebar {
                 width: 100%;
                 height: auto;
-                position: relative;
+                
             }
-
+           
             .main-content {
                 margin-left: 0;
+                margin-top:100px;
+                border: 1px solid black;
             }
 
             .sidebar ul {

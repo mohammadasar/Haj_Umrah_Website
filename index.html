@@ -68,23 +68,14 @@
           </div>
           <a href="packages.html">PACKAGES</a>
           <a href="services.html">SERVICES</a>
-          <a href="#" id="adminBtn">ADMIN</a>
+          <a href="#" class="adminBtn">ADMIN</a>
+
         </div>
       </div>
       <div class="col text-end">
         <a href="contact.html" class="btn">CONTACT US <i class="bi bi-chevron-right"></i></a>
       </div>
     </div>
-  </div>
-</div>
-<!-- Security Code Modal -->
-<div id="securityModal" class="modal">
-  <div class="modal-content">
-      <h2>Enter Security Code</h2>
-      <input type="password" id="securityCode" placeholder="Enter Code">
-      <p id="errorText" class="error"></p>
-      <button id="submitCode">Submit</button>
-      <button id="closeModal">Cancel</button>
   </div>
 </div>
 
@@ -110,9 +101,22 @@
   </div>
   <a href="packages.html" onclick="toggleMenu()">PACKAGES</a>
   <a href="services.html" onclick="toggleMenu()">SERVICES</a>
-  <a href="admin.html" onclick="toggleMenu()">ADMIN</a>
-</div>
+  <a href="#" class="adminBtn" onclick="toggleMenu()">ADMIN</a>
 
+</div>
+<!-- Security Code Modal -->
+<div id="securityModal" class="modal">
+  <div class="modal-content">
+    <h2>Enter Security Code</h2>
+    <div class="password-container">
+      <input type="password" id="securityCode" placeholder="Enter Code">
+      <span id="togglePassword" class="eye-icon">🙈</span>
+    </div>
+    <p id="errorText" class="error"></p>
+    <button id="submitCode">Submit</button>
+    <button id="closeModal">Cancel</button>
+  </div>
+</div>
 
 
 <!-- tawab video -->
