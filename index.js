@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const correctCode = "1234"; // Change this to your actual security code
 
       if (enteredCode === correctCode) {
-          window.location.href = "adminpanel.html"; // Redirect to admin panel
+          window.location.href = "admin.html"; // Redirect to admin panel
       } else {
           errorText.innerText = "Invalid security code!";
           errorText.style.color = "red";

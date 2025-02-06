@@ -39,6 +39,7 @@
         }
         .sidebar h2 {
             text-align: center;
+            font-family: "Fraunces", serif;;
             width: 100%;
             margin-bottom: 20px;
         }
@@ -66,6 +67,10 @@
             height: 100vh;
             transition: margin-left 0.3s;
         }
+        .main-content h2{
+            font-family: "Fraunces", serif;
+            font-weight: 800;
+        }
 
         iframe {
             width: 100%;
@@ -84,7 +89,7 @@
             .main-content {
                 margin-left: 0;
                 margin-top:100px;
-                border: 1px solid black;
+            
             }
 
             .sidebar ul {
@@ -125,10 +130,12 @@
                 <li><a href="#" id="homeBtn">DASHBOARD</a></li>
                 <li><a href="#" id="packageUploadBtn">PACKAGE UPLOAD</a></li>
                 <li><a href="#" id="videoUploadBtn">VIDEO UPLOAD</a></li>
+                <li><a href="#" id="postUploadBtn">POST</a></li> 
+
             </ul>
         </div>
         <div class="main-content">
-            <h2 id="pageTitle">Welcome to Admin Panel</h2>
+            <h2  id="pageTitle">Welcome to Admin Panel</h2>
             <!-- Content area for iframe -->
             <div id="contentArea">
                 <iframe id="contentFrame" src="" frameborder="0"></iframe>
@@ -137,56 +144,84 @@
     </div>
 
     <script>
-        // Get the elements
-        const homeBtn = document.getElementById('homeBtn');
-        const packageUploadBtn = document.getElementById('packageUploadBtn');
-        const videoUploadBtn = document.getElementById('videoUploadBtn');
-        const contentFrame = document.getElementById('contentFrame');
-        const pageTitle = document.getElementById('pageTitle');
-        const sidebarToggle = document.getElementById('sidebarToggle');
-        const sidebar = document.querySelector('.sidebar');
+      // Get the elements
+const homeBtn = document.getElementById('homeBtn');
+const packageUploadBtn = document.getElementById('packageUploadBtn');
+const videoUploadBtn = document.getElementById('videoUploadBtn');
+const contentFrame = document.getElementById('contentFrame');
+const postUploadBtn = document.getElementById('postUploadBtn'); 
+const pageTitle = document.getElementById('pageTitle');
+const sidebarToggle = document.getElementById('sidebarToggle');
+const sidebar = document.querySelector('.sidebar');
+const sidebarLinks = document.querySelectorAll('.sidebar ul li a'); // Get all sidebar links
 
-        // Get the current URL parameters
-        const urlParams = new URLSearchParams(window.location.search);
-        const activePage = urlParams.get('page');  // Check for 'page' parameter
+// Get the current URL parameters
+const urlParams = new URLSearchParams(window.location.search);
+const activePage = urlParams.get('page');  // Check for 'page' parameter
 
-        // Function to update iframe and page title
-        function updatePage(page) {
-            if (page === 'package_upload') {
-                contentFrame.src = 'cardupload.html';  // Load package upload page
-                pageTitle.innerText = 'Package Upload'; // Update title
-            } else if (page === 'video_upload') {
-                contentFrame.src = 'videopanel.html';  // Load video upload page
-                pageTitle.innerText = 'Video Upload';  // Update title
-            }
-        }
+// Function to update iframe and page title
+function updatePage(page) {
+    if (page === 'package_upload') {
+        contentFrame.src = 'cardupload.html';  // Load package upload page
+        pageTitle.innerText = 'Package Upload'; // Update title
+    } else if (page === 'video_upload') {
+        contentFrame.src = 'videopanel.html';  // Load video upload page
+        pageTitle.innerText = 'Video Upload';  // Update title
+    } else if (page === 'post_upload') { 
+     // Handle Post Upload
+        contentFrame.src = 'postupload.html';  // Load post upload page
+        pageTitle.innerText = 'Post Upload';
+    }
+}
 
-        // Check URL on page load and load the respective page
-        if (activePage) {
-            updatePage(activePage);
-        }
+// Check URL on page load and load the respective page
+if (activePage) {
+    updatePage(activePage);
+}
 
-        // Event listeners for the buttons
-        homeBtn.addEventListener('click', function() {
-            window.history.pushState(null, '', window.location.pathname);  // Remove the 'page' parameter
-            contentFrame.src = ''; // Clear iframe
-            pageTitle.innerText = 'Welcome to Admin Panel';
-        });
+// Function to close sidebar on mobile
+function closeSidebar() {
+    if (window.innerWidth <= 576) {  // Only close if screen width is <= 576px (mobile)
+        sidebar.classList.remove('active');
+    }
+}
 
-        packageUploadBtn.addEventListener('click', function() {
-            window.history.pushState(null, '', '?page=package_upload');  // Update URL with 'page' parameter
-            updatePage('package_upload');
-        });
+// Event listeners for the buttons
+homeBtn.addEventListener('click', function () {
+    window.history.pushState(null, '', window.location.pathname);  // Remove the 'page' parameter
+    contentFrame.src = ''; // Clear iframe
+    pageTitle.innerText = 'Welcome to Admin Panel';
+    closeSidebar();
+});
 
-        videoUploadBtn.addEventListener('click', function() {
-            window.history.pushState(null, '', '?page=video_upload');  // Update URL with 'page' parameter
-            updatePage('video_upload');
-        });
+packageUploadBtn.addEventListener('click', function () {
+    window.history.pushState(null, '', '?page=package_upload');  // Update URL with 'page' parameter
+    updatePage('package_upload');
+    closeSidebar();
+});
 
-        // Toggle sidebar on mobile
-        sidebarToggle.addEventListener('click', function() {
-            sidebar.classList.toggle('active');
-        });
+videoUploadBtn.addEventListener('click', function () {
+    window.history.pushState(null, '', '?page=video_upload');  // Update URL with 'page' parameter
+    updatePage('video_upload');
+    closeSidebar();
+});
+postUploadBtn.addEventListener('click', function () {
+    window.history.pushState(null, '', '?page=post_upload');
+    updatePage('post_upload');
+    closeSidebar();
+});
+
+// Close sidebar when any sidebar link is clicked
+sidebarLinks.forEach(link => {
+    link.addEventListener('click', function () {
+        closeSidebar();
+    });
+});
+
+// Toggle sidebar on mobile
+sidebarToggle.addEventListener('click', function () {
+    sidebar.classList.toggle('active');
+});
     </script>
 </body>
 </html>
