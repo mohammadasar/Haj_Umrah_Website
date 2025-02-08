@@ -126,13 +126,24 @@ body{
     height: 60px;
     padding: 0px 40px;
 }
+.navbar-container {
+    position: relative;
+    z-index: 1050; /* Ensure navbar is above other sections */
+}
+.dropdown {
+    position: relative;
+  }
 .dropdown:hover .dropdown-menu {
     display: block;
+    margin-top: 0;
  }
     /* Remove delay on hover */
 .dropdown-menu {
         margin-top: 0;
         transition: all 0.5s ease-in-out;
+        z-index: 1100 !important;
+        position: absolute !important;
+        background: white; /* Ensure visibility */
 }  
 .dropdown-toggle{
     text-decoration: none;
@@ -157,8 +168,9 @@ body{
 
 .dropdown .dropdown-menu{
     margin-top: 27px;
-    border: 1px solid white;
+    border: 1px solid rgb(255, 252, 252);
     box-shadow: 1px 0px 30px 0px rgba(192.3921875, 192.3921875, 192.3921875, 0.3);
+    
 }
 .btn{
     border: 1px solid #A8854E;
@@ -183,7 +195,9 @@ body{
     color: #A8854E;
 }
 .video-container{
+    position: relative;
     height: 700px;
+    z-index: 1;
 }
 .makka-video{
     height: 100%;
@@ -488,7 +502,7 @@ body{
     font-family: "Fraunces", serif;
     font-size: 1.5rem;
     font-weight: 500;
-    overflow-x: hidden;
+    
 }
 .easy-process .row{
     width: 100%;

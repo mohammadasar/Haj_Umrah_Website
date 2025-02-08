@@ -47,16 +47,19 @@
 </div>
 
 <!-- Desktop Navbar -->
-<div class="container-fluid d-none d-md-block">
-  <div class="navbar-container">
-    <div class="row align-items-center d-flex">
-      <div class="col">
-        <div class="nav-head" data-aos="fade-down" data-aos-duration="2700">Taj</div>
+<div class="container-fluid  d-none d-md-block" >
+  <div class="navbar-container "   >
+    <div class="row align-items-center  d-flex">
+      <!-- Brand Name -->
+      <div class="col ps-5" >
+        <div class="nav-head">Taj</div>
       </div>
-      <div class="col">
-        <div class="nav-items d-flex flex-row gap-4 align-items-center" data-aos="fade-down" data-aos-duration="2700">
+      <!-- Navigation Items -->
+      <div class="col" >
+        <div class="nav-items d-flex flex-row gap-4 align-items-center" data-aos="fade-down" data-aos-duration="1500" >
           <a href="index.html">HOME</a>
-          <div class="dropdown">
+          <!-- Dropdown for Pages -->
+          <div class="dropdown" >
             <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               PAGES
             </a>
@@ -64,17 +67,16 @@
               <li><a class="dropdown-item" href="about.html">ABOUT</a></li>
               <li><a class="dropdown-item" href="contact.html">CONTACT</a></li>
               <li><a class="dropdown-item" href="features.html">FEATURES</a></li>
-              <li><a class="dropdown-item" href="#">VIDEOS</a></li>
+              <li><a class="dropdown-item" href="videos.html">VIDEOS</a></li>
             </ul>
           </div>
           <a href="packages.html">PACKAGES</a>
-          <a href="services.html">SERVICES</a>
-          <a href="#" class="adminBtn">ADMIN</a>
-
+          <a href="#">SERVICES</a>
         </div>
       </div>
-      <div class="col text-end" data-aos="fade-down" data-aos-duration="2700" d>
-        <a href="contact.html" class="btn">CONTACT US <i class="bi bi-chevron-right"></i></a>
+      <!-- Contact Us Button -->
+      <div class="col text-end" >
+        <a href="contact.html" class="btn ">CONTACT US <i class="bi bi-chevron-right"></i></a>
       </div>
     </div>
   </div>
@@ -107,10 +109,10 @@
 </div>
 <!-- Security Code Modal -->
 <div id="securityModal" class="modal" >
-  <div class="sub-modal" >
+  <div class="sub-modal">
   <div class="modal-content">
     <h2>Enter Security Code</h2>
-    <div class="password-container" >
+    <div class="password-container">
       <input type="password" id="securityCode" placeholder="Enter Code">
       <span id="togglePassword" class="eye-icon">🙈</span>
     </div>
@@ -476,7 +478,10 @@
 
       <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
       <script>
-        AOS.init();
-      </script>
+        // Initialize AOS
+        document.addEventListener("DOMContentLoaded", function () {
+            AOS.init();
+        });
+    </script>
 </body>
 </html>
