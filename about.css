@@ -97,6 +97,10 @@
 .com-img img{
     width: 100%;
 }
+.com-img {
+   overflow-x: hidden;
+}
+
 .features-container-1{
     position: relative;
     height: 450px;
