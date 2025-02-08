@@ -488,6 +488,7 @@ body{
     font-family: "Fraunces", serif;
     font-size: 1.5rem;
     font-weight: 500;
+    overflow-x: hidden;
 }
 .easy-process .row{
     width: 100%;
@@ -1067,7 +1068,7 @@ body{
     }
     .feature-container .row {
         position: absolute;
-        top: -600px;
+        top: -640px;
         left: 10%;
         width: 85%;
         height: auto;
