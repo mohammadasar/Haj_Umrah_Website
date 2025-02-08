@@ -21,7 +21,7 @@ function toggleDropdown() {
   
    // Adjust navLinks height to 100vh when dropdown is shown
    if (dropdown.classList.contains('show')) {
-    navLinks.style.height = "auto";  // Reset height when dropdown is closed
+    navLinks.style.height = "100vh";  // Reset height when dropdown is closed
   } else {
     navLinks.style.height = "100vh"; // Set to full viewport height
   }
