@@ -105,23 +105,29 @@ async function fetchCards() {
     cards.forEach(card => {
       const cardElement = document.createElement('div');
       cardElement.classList.add('col-md-4', 'mb-3');
-
+       
+      // Add AOS animation attributes
+      cardElement.setAttribute("data-aos", "fade-up");
+      cardElement.setAttribute("data-aos-duration", "1900");
+      cardElement.setAttribute("data-aos-easing", "linear");
+      
+       
       cardElement.innerHTML = `
         <div class="card p-3 shadow-sm">
           <img src="${card.image}" class="card-img-top img-fluid" alt="Package Image">
-          <div class="card-body text-start">
+          <div class="card-body text-start package-cards">
             <h5 class="card-title ">${card.packageName}</h5>
-            <p class="card-text"><i class="fa-solid fa-tag"></i> ${card.price}</p>
-            <p class="card-text"><i class="fa-solid fa-calendar-days"></i> ${card.start}</p>
-            <p class="card-text"><i class="fa-solid fa-hotel"></i> ${card.hotel}</p>
-            <p class="card-text"><i class="fa-solid fa-ticket"></i> ${card.ticket}</p>
-            <p class="card-text"><i class="fa-solid fa-id-card"></i> ${card.visa}</p>
-            <p class="card-text"><i class="fa-solid fa-bus"></i> ${card.transport}</p>
-            <p class="card-text"><i class="fa-solid fa-utensils"></i> ${card.meals}</p>
-            <p class="card-text"><i class="fa-solid fa-kaaba"></i> ${card.ziyarathTour}</p>
-            <p class="card-text"><i class="fa-solid fa-person-walking"></i> ${card.guide}</p>
-            <p class="card-text"><i class="fa-solid fa-suitcase"></i> ${card.kit}</p>
-            <p class="card-text"><i class="fa-solid fa-hands-helping"></i> ${card.assist}</p>
+            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-tag"></i><p class="card-text"> ${card.price}</p></div>
+            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-calendar-days"></i><p class="card-text"> ${card.start}</p></div>
+            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-hotel"></i><p class="card-text"> ${card.hotel}</p></div>
+            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-ticket"></i><p class="card-text"> ${card.ticket}</p></div>
+            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-id-card"></i><p class="card-text"> ${card.visa}</p></div>
+            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-bus"></i><p class="card-text"> ${card.transport}</p></div>
+            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-utensils"></i><p class="card-text"> ${card.meals}</p></div>
+            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-kaaba"></i><p class="card-text">${card.ziyarathTour}</p></div>
+            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-person-walking "></i><p class="card-text"> ${card.guide}</p></div>
+            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-suitcase"></i><p class="card-text"> ${card.kit}</p></div>
+            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-hands-helping"></i><p class="card-text"> ${card.assist}</p></div>
           </div>
           <div class="text-center mt-5 mb-4">
               <a href="#" class="card-btn">CONTACT <i class="bi bi-chevron-right"></i></a>
@@ -140,3 +146,45 @@ document.addEventListener("DOMContentLoaded", () => {
   fetchCards();
 });
 
+
+
+// videos - getting methods
+const baseUrl = "http://localhost:8080/api/videos";
+
+async function fetchVideos() {
+  try {
+    const response = await fetch(`${baseUrl}/get`);
+    if (!response.ok) throw new Error(`Error: ${response.status}`);
+
+    const videos = await response.json();
+    const videoGrid = document.getElementById("videoGrid");
+    videoGrid.innerHTML = "";
+
+    videos.forEach(video => {
+      const colDiv = document.createElement("div");
+      colDiv.classList.add("col-md-4", "col-12", "mb-3"); // 4-column on medium, full width on small
+      
+        // Add AOS animation attributes
+        colDiv.setAttribute("data-aos", "fade-up");
+        colDiv.setAttribute("data-aos-duration", "1200");
+        colDiv.setAttribute("data-aos-easing", "linear");
+        // colDiv.setAttribute("data-aos-delay", index * 100); // Stagger effect
+
+      colDiv.innerHTML = `
+        <div class="card p-2 shadow-sm">
+          <video onclick="playFullscreen('http://localhost:8080/${video.url}')" controls style="width: 100%;">
+            <source src="http://localhost:8080/${video.url}" type="video/mp4">
+          </video>
+         
+        </div>
+      `;
+      
+      videoGrid.appendChild(colDiv);
+    });
+  } catch (error) {
+    console.error("Error fetching videos:", error);
+  }
+}
+
+// Fetch videos when page loads
+document.addEventListener("DOMContentLoaded", fetchVideos);
