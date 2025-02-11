@@ -83,23 +83,25 @@ document.addEventListener("DOMContentLoaded", function () {
 // package api connection //for package page code
 async function fetchCards() {
   const cardsList = document.getElementById('cardsList');
-  cardsList.innerHTML = ''; // Clear the existing list
+  
+  if (!cardsList) {
+    console.error("Error: Element with ID 'cardsList' not found.");
+    return;
+  }
 
+  cardsList.innerHTML = ''; // Clear existing list
   try {
     const response = await fetch('http://localhost:8080/cards/all');
-    
-    if (!response.ok) {
-      throw new Error('Failed to fetch cards');
-    }
+    if (!response.ok) throw new Error('Failed to fetch cards');
 
     const cards = await response.json();
+    console.log("cards=====", cards);
     
     if (cards.length === 0) {
       cardsList.innerHTML = '<p class="text-center text-muted">No packages available.</p>';
       return;
     }
 
-    // Loop through the cards and create card elements
     cards.forEach(card => {
       const cardElement = document.createElement('div');
       cardElement.classList.add('col-md-4', 'mb-3');
@@ -107,20 +109,23 @@ async function fetchCards() {
       cardElement.innerHTML = `
         <div class="card p-3 shadow-sm">
           <img src="${card.image}" class="card-img-top img-fluid" alt="Package Image">
-          <div class="card-body text-center">
-            <h5 class="card-title">${card.packageName}</h5>
-            <p class="card-text"><strong>Hotel:</strong> ${card.hotel}</p>
-            <p class="card-text"><strong>Ticket:</strong> ${card.ticket}</p>
-            <p class="card-text"><strong>Transport:</strong> ${card.transport}</p>
-            <p class="card-text"><strong>Meals:</strong> ${card.meals}</p>
-            <p class="card-text"><strong>Ziyarath Tour:</strong> ${card.ziyarathTour}</p>
-            <p class="card-text"><strong>Guide:</strong> ${card.guide}</p>
-            <p class="card-text"><strong>Kit:</strong> ${card.kit}</p>
-            <p class="card-text"><strong>Assist:</strong> ${card.assist}</p>
-            <p class="card-text"><strong>Date:</strong> ${card.date}</p>
-            <p class="card-text"><strong>Visa:</strong> ${card.visa}</p>
-            <p class="card-text"><strong>Price:</strong> $${card.price.toFixed(2)}</p>
+          <div class="card-body text-start">
+            <h5 class="card-title ">${card.packageName}</h5>
+            <p class="card-text"><i class="fa-solid fa-tag"></i> ${card.price}</p>
+            <p class="card-text"><i class="fa-solid fa-calendar-days"></i> ${card.start}</p>
+            <p class="card-text"><i class="fa-solid fa-hotel"></i> ${card.hotel}</p>
+            <p class="card-text"><i class="fa-solid fa-ticket"></i> ${card.ticket}</p>
+            <p class="card-text"><i class="fa-solid fa-id-card"></i> ${card.visa}</p>
+            <p class="card-text"><i class="fa-solid fa-bus"></i> ${card.transport}</p>
+            <p class="card-text"><i class="fa-solid fa-utensils"></i> ${card.meals}</p>
+            <p class="card-text"><i class="fa-solid fa-kaaba"></i> ${card.ziyarathTour}</p>
+            <p class="card-text"><i class="fa-solid fa-person-walking"></i> ${card.guide}</p>
+            <p class="card-text"><i class="fa-solid fa-suitcase"></i> ${card.kit}</p>
+            <p class="card-text"><i class="fa-solid fa-hands-helping"></i> ${card.assist}</p>
           </div>
+          <div class="text-center mt-5 mb-4">
+              <a href="#" class="card-btn">CONTACT <i class="bi bi-chevron-right"></i></a>
+             </div>
         </div>
       `;
       cardsList.appendChild(cardElement);
@@ -131,5 +136,7 @@ async function fetchCards() {
   }
 }
 
-// Call the function to load cards when the page is ready
-fetchCards();
+document.addEventListener("DOMContentLoaded", () => {
+  fetchCards();
+});
+
