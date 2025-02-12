@@ -168,7 +168,7 @@ async function fetchVideos() {
         colDiv.setAttribute("data-aos", "fade-up");
         colDiv.setAttribute("data-aos-duration", "1200");
         colDiv.setAttribute("data-aos-easing", "linear");
-        // colDiv.setAttribute("data-aos-delay", index * 100); // Stagger effect
+        
 
       colDiv.innerHTML = `
         <div class="card p-2 shadow-sm">
@@ -188,3 +188,45 @@ async function fetchVideos() {
 
 // Fetch videos when page loads
 document.addEventListener("DOMContentLoaded", fetchVideos);
+
+document.addEventListener("DOMContentLoaded", function() {
+  const API_URL = 'http://localhost:8080/api/images'; // Your Spring Boot API endpoint
+  const imageContainer = document.getElementById('imageContainer');
+
+  // Function to load all images from the backend
+  function loadImages() {
+    fetch(`${API_URL}/all`)
+      .then(response => response.json())
+      .then(images => {
+        console.log(images); // Check the response from the backend
+        imageContainer.innerHTML = ''; // Clear previous images
+        images.forEach(image => {
+          console.log("image---------", image); // Debugging image
+
+          const imgDiv = document.createElement('div');
+          imgDiv.classList.add('image-container', 'col-md-4', 'col-12');
+
+          // Add AOS attributes to the image container
+          imgDiv.setAttribute('data-aos', 'fade-up'); // AOS fade-up animation
+          imgDiv.setAttribute('data-aos-duration', '1200'); // Duration of 1200ms
+          imgDiv.setAttribute('data-aos-easing', 'linear'); // Easing function for smooth animation
+
+          const img = document.createElement('img');
+          img.src = image.imageUrl;
+          img.alt = 'Uploaded Image';
+          img.classList.add('image');
+
+          
+
+          imgDiv.appendChild(img);
+      
+
+          imageContainer.appendChild(imgDiv);
+        });
+      })
+      .catch(err => console.log('Error loading images:', err));
+  }
+
+  // Load images initially
+  loadImages();
+});
