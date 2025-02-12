@@ -281,6 +281,7 @@ body{
     z-index: 10;
     border-radius: 50px;
     border: 1px solid white;
+    
 }
 .feature-container .column{
     border-right: 1px solid white;
@@ -299,6 +300,8 @@ body{
     font-size: 18px;
     font-weight: 500;
     font-family: "Heebo", sans-serif;
+    position: relative;
+    z-index:1000;
 }
 .package-container .card-title{
     font-family: "Fraunces", serif;
@@ -1172,7 +1175,7 @@ body{
      .start-btn {
          position: absolute;
          bottom: 62%;
-         left: 26%;
+         left: 25%;
          z-index: 5;
      } 
      .start-btn button{
