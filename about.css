@@ -327,15 +327,16 @@
     }
     .abt-para {
         position: absolute;
-        bottom: 10%;
-        left: 5%;
+        bottom: 2%;
+        left: 0%;
+        width: 100%;
         color: white;
         text-align: center;
         font-family: "heebo", serif;
         font-size: 0.8rem;
         font-weight: 500;
         z-index: 3;
-        padding: 0px 30px;
+        padding: 0px 10px;
     }
     .abt-arab {
         font-family: "Gideon Roman", serif;
