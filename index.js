@@ -91,7 +91,7 @@ async function fetchCards() {
 
   cardsList.innerHTML = ''; // Clear existing list
   try {
-    const response = await fetch('http://localhost:8080/cards/all');
+    const response = await fetch('https://haj-umrah-backend.onrender.com/cards/all');
     if (!response.ok) throw new Error('Failed to fetch cards');
 
     const cards = await response.json();
@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // videos - getting methods
-const baseUrl = "http://localhost:8080/api/videos";
+const baseUrl = "https://haj-umrah-backend.onrender.com/api/videos";
 
 async function fetchVideos() {
   try {
@@ -172,8 +172,8 @@ async function fetchVideos() {
 
       colDiv.innerHTML = `
         <div class="card p-2 shadow-sm">
-          <video onclick="playFullscreen('http://localhost:8080/${video.url}')" controls style="width: 100%;">
-            <source src="http://localhost:8080/${video.url}" type="video/mp4">
+          <video onclick="playFullscreen('https://haj-umrah-backend.onrender.com/${video.url}')" controls style="width: 100%;">
+            <source src="https://haj-umrah-backend.onrender.com/${video.url}" type="video/mp4">
           </video>
          
         </div>
@@ -190,7 +190,7 @@ async function fetchVideos() {
 document.addEventListener("DOMContentLoaded", fetchVideos);
 
 document.addEventListener("DOMContentLoaded", function() {
-  const API_URL = 'http://localhost:8080/api/images'; // Your Spring Boot API endpoint
+  const API_URL = 'https://haj-umrah-backend.onrender.com/api/images'; // Your Spring Boot API endpoint
   const imageContainer = document.getElementById('imageContainer');
 
   // Function to load all images from the backend
