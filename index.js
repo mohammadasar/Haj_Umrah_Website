@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function fetchVideos() {
   try {
-    const response = await fetch(`${baseUrl}/get`);
+    const response = await fetch(`${BASE_URL}/get`);
     if (!response.ok) throw new Error(`Error: ${response.status}`);
 
     const videos = await response.json();
@@ -170,8 +170,8 @@ async function fetchVideos() {
 
       colDiv.innerHTML = `
         <div class="card p-2 shadow-sm">
-          <video onclick="playFullscreen('${baseUrl}/${video.url}')" controls style="width: 100%;">
-            <source src="${baseUrl}/${video.url}" type="video/mp4">
+          <video onclick="playFullscreen('${BASE_URL}/${video.url}')" controls style="width: 100%;">
+            <source src="${BASE_URL}/${video.url}" type="video/mp4">
           </video>
         </div>
       `;
