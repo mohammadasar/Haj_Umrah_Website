@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // videos - getting methods
-const baseUrl = "https://haj-umrah-backend.onrender.com/api/videos";
+window.baseUrl = "https://haj-umrah-backend.onrender.com/api/videos";
 
 async function fetchVideos() {
   try {
