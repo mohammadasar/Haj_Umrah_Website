@@ -128,13 +128,13 @@
 
   <script>
 
-const BASE_URL = "https://haj-umrah-backend.onrender.com";
+const BASE_URL = "https://haj-umrah-backend.onrender.com";  // Make sure the BASE_URL is correct
 
 async function fetchVideos() {
   try {
     const response = await fetch(`${BASE_URL}/api/videos/get`);
     if (!response.ok) throw new Error(`Error: ${response.status}`);
-    
+
     const videos = await response.json();
     const videoTableBody = document.getElementById("videoTableBody");
     videoTableBody.innerHTML = "";
