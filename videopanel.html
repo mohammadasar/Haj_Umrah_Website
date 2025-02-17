@@ -130,43 +130,43 @@
 
    
 
-    async function fetchVideos() {
-      try {
-        const response = await fetch(`${baseUrl}/get`);
-        if (!response.ok) throw new Error(`Error: ${response.status}`);
+async function fetchVideos() {
+  try {
+    const response = await fetch(`${BASE_URL}/api/videos/get`);
+    if (!response.ok) throw new Error(`Error: ${response.status}`);
+    
+    const videos = await response.json();
+    const videoTableBody = document.getElementById("videoTableBody");
+    videoTableBody.innerHTML = "";
 
-        const videos = await response.json();
-        const videoTableBody = document.getElementById("videoTableBody");
-        videoTableBody.innerHTML = "";
-
-        videos.forEach(video => {
-          const row = document.createElement("tr");
-          row.innerHTML = `
-            <td>
-              <video onclick="playFullscreen('https://haj-umrah-backend.onrender.com/${video.url}')" controls>
-                <source src="https://haj-umrah-backend.onrender.com/${video.url}" type="video/mp4">
-              </video>
-            </td>
-            <td>
-              <span id="title-${video.id}">${video.name}</span>
-              <input type="text" id="input-${video.id}" value="${video.name}" class="form-control d-none">
-            </td>
-            <td>${video.id}</td>
-           <td class="action">
-  
-    <i class="bi bi-pencil-square" onclick="toggleEdit('${video.id}')"></i>
-    <i class="bi bi-trash" onclick="deleteVideo('${video.id}')"></i>
-  <input type="file" id="file-${video.id}" class="form-control d-none" accept="video/*">
-  <button class="btn btn-primary btn-sm d-none" id="update-${video.id}" onclick="updateVideoFile('${video.id}')">Update</button>
-</td>
-
-          `;
-          videoTableBody.appendChild(row);
-        });
-      } catch (error) {
-        console.error("Error fetching videos:", error);
-      }
-    }
+    videos.forEach(video => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>
+          <video onclick="playFullscreen('${BASE_URL}${video.url}')" controls>
+            <source src="${BASE_URL}${video.url}" type="video/mp4">
+          </video>
+        </td>
+        <td>
+          <span id="title-${video.id}">${video.name}</span>
+          <input type="text" id="input-${video.id}" value="${video.name}" class="form-control d-none">
+        </td>
+        <td>${video.id}</td>
+        <td class="action">
+          <i class="bi bi-pencil-square" onclick="toggleEdit('${video.id}')"></i>
+          <i class="bi bi-trash" onclick="deleteVideo('${video.id}')"></i>
+          <input type="file" id="file-${video.id}" class="form-control d-none" accept="video/*">
+          <button class="btn btn-primary btn-sm d-none" id="update-${video.id}" onclick="updateVideoFile('${video.id}')">Update</button>
+        </td>
+      `;
+      videoTableBody.appendChild(row);
+    });
+  } catch (error) {
+    console.error("Error fetching videos:", error);
+    const videoTableBody = document.getElementById("videoTableBody");
+    videoTableBody.innerHTML = "<tr><td colspan='4'>Error fetching videos. Please try again.</td></tr>";
+  }
+}
 
     async function uploadVideo() {
       const fileInput = document.getElementById("videoFile");

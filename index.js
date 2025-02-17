@@ -148,8 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-// videos - getting methods
-window.baseUrl = "https://haj-umrah-backend.onrender.com/api/videos";
+const baseUrl = "https://haj-umrah-backend.onrender.com/api/videos";
 
 async function fetchVideos() {
   try {
@@ -163,28 +162,34 @@ async function fetchVideos() {
     videos.forEach(video => {
       const colDiv = document.createElement("div");
       colDiv.classList.add("col-md-4", "col-12", "mb-3"); // 4-column on medium, full width on small
-      
-        // Add AOS animation attributes
-        colDiv.setAttribute("data-aos", "fade-up");
-        colDiv.setAttribute("data-aos-duration", "1200");
-        colDiv.setAttribute("data-aos-easing", "linear");
-        
+
+      // Add AOS animation attributes
+      colDiv.setAttribute("data-aos", "fade-up");
+      colDiv.setAttribute("data-aos-duration", "1200");
+      colDiv.setAttribute("data-aos-easing", "linear");
 
       colDiv.innerHTML = `
         <div class="card p-2 shadow-sm">
-          <video onclick="playFullscreen('https://haj-umrah-backend.onrender.com/${video.url}')" controls style="width: 100%;">
-            <source src="https://haj-umrah-backend.onrender.com/${video.url}" type="video/mp4">
+          <video onclick="playFullscreen('${baseUrl}/${video.url}')" controls style="width: 100%;">
+            <source src="${baseUrl}/${video.url}" type="video/mp4">
           </video>
-         
         </div>
       `;
-      
+
       videoGrid.appendChild(colDiv);
     });
   } catch (error) {
     console.error("Error fetching videos:", error);
+    const videoGrid = document.getElementById("videoGrid");
+    videoGrid.innerHTML = "<div class='alert alert-danger'>Error fetching videos. Please try again later.</div>";
   }
 }
+
+// Initialize AOS
+AOS.init();
+
+// Call the fetchVideos when the document is loaded
+document.addEventListener("DOMContentLoaded", fetchVideos);
 
 // Fetch videos when page loads
 document.addEventListener("DOMContentLoaded", fetchVideos);
