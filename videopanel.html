@@ -127,6 +127,7 @@
   </div>
 
   <script>
+
     const baseUrl = "https://haj-umrah-backend.onrender.com/api/videos";
 
     async function fetchVideos() {
@@ -143,7 +144,7 @@
           row.innerHTML = `
             <td>
               <video onclick="playFullscreen('https://haj-umrah-backend.onrender.com/${video.url}')" controls>
-                <source src="http://localhost:8080/${video.url}" type="video/mp4">
+                <source src="https://haj-umrah-backend.onrender.com/${video.url}" type="video/mp4">
               </video>
             </td>
             <td>
