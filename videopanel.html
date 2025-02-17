@@ -177,7 +177,7 @@ async function fetchVideos() {
       formData.append("file", file);
 
       try {
-        const response = await fetch(baseUrl, { method: "POST", body: formData });
+        const response = await fetch(`${BASE_URL}/api/videos/upload`, { method: "POST", body: formData });
         if (!response.ok) throw new Error("Upload failed");
 
         alert("Video uploaded successfully!");
