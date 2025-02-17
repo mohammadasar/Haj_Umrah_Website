@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function fetchVideos() {
   try {
-    const response = await fetch(`${BASE_URL}/get`);
+    const response = await fetch(`${BASE_URL}/api/videos/get`);
     if (!response.ok) throw new Error(`Error: ${response.status}`);
 
     const videos = await response.json();
