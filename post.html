@@ -239,7 +239,9 @@ button:hover {
           imgDiv.classList.add("image-container", "col-md-4", "col-12");
 
           const img = document.createElement("img");
-          img.src = image.imageUrl;
+            // Force HTTPS by replacing http:// with https://
+          img.src = image.imageUrl.replace("http://", "https://");
+          // img.src = image.imageUrl;
           img.alt = "Uploaded Image";
           img.classList.add("image");
 
