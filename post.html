@@ -245,7 +245,9 @@ button:hover {
           img.alt = "Uploaded Image";
           img.classList.add("image");
 
-         
+          imgDiv.setAttribute("data-aos", "fade-up");
+          imgDiv.setAttribute("data-aos-duration", "1200");
+          imgDiv.setAttribute("data-aos-easing", "linear");
 
           imgDiv.appendChild(img);
           imageContainer.appendChild(imgDiv);
