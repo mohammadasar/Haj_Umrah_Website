@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function() {
     fetch(`${API_URL}/all`)
       .then(response => response.json())
       .then(images => {
-        console.log(images); // Check the response from the backend
+        console.log("images---------",images); // Check the response from the backend
         imageContainer.innerHTML = ''; // Clear previous images
         images.forEach(image => {
           console.log("image---------", image); // Debugging image
