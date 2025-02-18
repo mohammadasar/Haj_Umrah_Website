@@ -194,16 +194,19 @@ document.addEventListener("DOMContentLoaded", fetchVideos);
 
 
 document.addEventListener("DOMContentLoaded", function () {
-  const API_URL = "https://haj-umrah-backend.onrender.com/api/images"; // Your Spring Boot API endpoint
+  const API_URL = "https://haj-umrah-backend.onrender.com/api/images"; 
   const imageContainer = document.getElementById("imageContainer");
 
-  // Function to load all images from the backend
   function loadImages() {
+    console.log("Fetching images...");
     fetch(`${API_URL}/all`)
-      .then((response) => response.json())
-      .then((images) => {
-        imageContainer.innerHTML = ""; // Clear previous images
-        images.forEach((image) => {
+      .then(response => response.json())
+      .then(images => {
+        console.log("Images fetched:", images);
+        imageContainer.innerHTML = ""; 
+        images.forEach(image => {
+          console.log("Adding image:", image.imageUrl);
+          
           const imgDiv = document.createElement("div");
           imgDiv.classList.add("image-container", "col-md-4", "col-12");
 
@@ -216,9 +219,8 @@ document.addEventListener("DOMContentLoaded", function () {
           imageContainer.appendChild(imgDiv);
         });
       })
-      .catch((err) => console.log("Error loading images:", err));
+      .catch(err => console.error("Error loading images:", err));
   }
 
-  // Load images initially
   loadImages();
 });
