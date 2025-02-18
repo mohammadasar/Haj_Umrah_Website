@@ -191,9 +191,9 @@ AOS.init();
 // Call the fetchVideos when the document is loaded
 document.addEventListener("DOMContentLoaded", fetchVideos);
 
-// Fetch videos when page loads
-document.addEventListener("DOMContentLoaded", fetchVideos);
 
+
+// image retrive
 document.addEventListener("DOMContentLoaded", function() {
   const API_URL = 'https://haj-umrah-backend.onrender.com/api/images'; // Your Spring Boot API endpoint
   const imageContainer = document.getElementById('imageContainer');
