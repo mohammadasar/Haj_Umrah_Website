@@ -165,7 +165,7 @@
 
     <script>
       // videopanel
-const BASE_URL = "https://haj-umrah-backend.onrender.com"; 
+ const BASE_URL = "https://haj-umrah-backend.onrender.com"; 
 
 async function fetchVideos() {
   try {
@@ -173,14 +173,15 @@ async function fetchVideos() {
     if (!response.ok) throw new Error(`Error: ${response.status}`);
 
     const videos = await response.json();
+    console.log("Videos fetched:", videos); // Log the response
+
     const videoGrid = document.getElementById("videoGrid");
     videoGrid.innerHTML = "";
 
     videos.forEach(video => {
       const colDiv = document.createElement("div");
-      colDiv.classList.add("col-md-4", "col-12", "mb-3"); // 4-column on medium, full width on small
+      colDiv.classList.add("col-md-4", "col-12", "mb-3");
 
-      // Add AOS animation attributes
       colDiv.setAttribute("data-aos", "fade-up");
       colDiv.setAttribute("data-aos-duration", "1200");
       colDiv.setAttribute("data-aos-easing", "linear");
@@ -201,6 +202,7 @@ async function fetchVideos() {
     videoGrid.innerHTML = "<div class='alert alert-danger'>Error fetching videos. Please try again later.</div>";
   }
 }
+
 
 // Initialize AOS
 AOS.init();
