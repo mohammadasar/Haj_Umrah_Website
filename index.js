@@ -194,19 +194,27 @@ document.addEventListener("DOMContentLoaded", fetchVideos);
 
 
 document.addEventListener("DOMContentLoaded", function () {
-  const API_URL = "https://haj-umrah-backend.onrender.com/api/images"; 
+  console.log("DOM fully loaded and parsed");
+  const API_URL = "https://haj-umrah-backend.onrender.com/api/images/all"; 
   const imageContainer = document.getElementById("imageContainer");
 
   function loadImages() {
-    console.log("Fetching images...");
-    fetch(`${API_URL}/all`)
+    console.log("Fetching images from API...");
+
+    fetch(API_URL)
       .then(response => response.json())
       .then(images => {
-        console.log("Images fetched:", images);
-        imageContainer.innerHTML = ""; 
+        console.log("API Response:", images);
+        
+        if (!Array.isArray(images) || images.length === 0) {
+          console.warn("No images found or incorrect response format!");
+          return;
+        }
+
+        imageContainer.innerHTML = "";
         images.forEach(image => {
-          console.log("Adding image:", image.imageUrl);
-          
+          console.log("Processing image:", image);
+
           const imgDiv = document.createElement("div");
           imgDiv.classList.add("image-container", "col-md-4", "col-12");
 
