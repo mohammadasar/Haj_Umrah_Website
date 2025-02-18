@@ -71,9 +71,12 @@
       color: white;
       cursor: pointer;
     }
-    .action{
-      width: 200px;
-    }
+    .action i {
+  font-size: 18px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
 
     .table-responsive {
       overflow-x: auto;
@@ -168,25 +171,38 @@ async function fetchVideos() {
   }
 }
 
-    async function uploadVideo() {
-      const fileInput = document.getElementById("videoFile");
-      const file = fileInput.files[0];
-      if (!file) return alert("Please select a video file!");
+function showLoading(button) {
+  button.innerHTML = `<span class="spinner-border spinner-border-sm"></span> Uploading...`;
+  button.disabled = true;
+}
 
-      const formData = new FormData();
-      formData.append("file", file);
+async function uploadVideo() {
+  const fileInput = document.getElementById("videoFile");
+  const file = fileInput.files[0];
+  const uploadBtn = document.querySelector(".btn-primary");
 
-      try {
-        const response = await fetch(`${BASE_URL}/api/videos`, { method: "POST", body: formData });
-        if (!response.ok) throw new Error("Upload failed");
+  if (!file) return alert("Please select a video file!");
 
-        alert("Video uploaded successfully!");
-        fileInput.value = "";
-        fetchVideos();
-      } catch (error) {
-        console.error("Error uploading video:", error);
-      }
-    }
+  showLoading(uploadBtn);
+
+  const formData = new FormData();
+  formData.append("file", file);
+
+  try {
+    const response = await fetch(`${BASE_URL}/api/videos`, { method: "POST", body: formData });
+    if (!response.ok) throw new Error("Upload failed");
+
+    alert("Video uploaded successfully!");
+    fileInput.value = "";
+    fetchVideos();
+  } catch (error) {
+    console.error("Error uploading video:", error);
+  } finally {
+    uploadBtn.innerHTML = "Upload";
+    uploadBtn.disabled = false;
+  }
+}
+
 
     async function updateVideoFile(id) {
       const fileInput = document.getElementById(`file-${id}`);
@@ -216,15 +232,15 @@ async function fetchVideos() {
     }
 
     async function deleteVideo(id) {
-      if (!confirm("Are you sure you want to delete this video?")) return;
-      try {
-        await fetch(`${baseUrl}/${id}`, { method: "DELETE" });
-        alert("Video deleted successfully!");
-        fetchVideos();
-      } catch (error) {
-        console.error("Error deleting video:", error);
-      }
-    }
+  if (!confirm("Are you sure you want to delete this video?")) return;
+  try {
+    await fetch(`${BASE_URL}/api/videos/delete/${id}`, { method: "DELETE" });
+    alert("Video deleted successfully!");
+    fetchVideos();
+  } catch (error) {
+    console.error("Error deleting video:", error);
+  }
+}
 
     function playFullscreen(videoUrl) {
       document.getElementById("fullscreenVideo").src = videoUrl;
