@@ -229,42 +229,41 @@ button:hover {
   function loadImages() {
     console.log("Fetching images from API...");
 
-    function loadImages() {
-    console.log("Fetching images from API...");
-
     fetch(API_URL)
-        .then(response => response.json())
-        .then(images => {
-            if (!Array.isArray(images) || images.length === 0) {
-                console.warn("No images found!");
-                imageContainer.innerHTML = "<p>No images available</p>";
-                return;
-            }
+      .then(response => response.json())
+      .then(images => {
+        console.log("API Response:", images);
+        
+        if (!Array.isArray(images) || images.length === 0) {
+          console.warn("No images found or incorrect response format!");
+          return;
+        }
 
-            imageContainer.innerHTML = "";
-            images.forEach(image => {
-                if (!image.imageUrl) return; // Skip if URL is missing
+        imageContainer.innerHTML = "";
+        images.forEach(image => {
+          console.log("Processing image:", image);
 
-                const imgDiv = document.createElement("div");
-                imgDiv.classList.add("image-container", "col-md-4", "col-12");
+          const imgDiv = document.createElement("div");
+          imgDiv.classList.add("image-container", "col-md-4", "col-12");
 
-                const img = document.createElement("img");
-                img.src = image.imageUrl;
-                img.alt = "Uploaded Image";
-                img.classList.add("image");
+          const img = document.createElement("img");
+          img.src = image.imageUrl;
+          img.alt = "Uploaded Image";
+          img.classList.add("image");
 
-                // Add AOS animation attributes
-                img.setAttribute("data-aos", "fade-up");
-                img.setAttribute("data-aos-duration", "1200");
-                img.setAttribute("data-aos-easing", "linear");
+          // Add AOS animation attributes
+          img.setAttribute("data-aos", "fade-up");
+          img.setAttribute("data-aos-duration", "1200");
+          img.setAttribute("data-aos-easing", "linear");
 
-                imgDiv.appendChild(img);
-                imageContainer.appendChild(imgDiv);
-            });
-        })
-        .catch(err => console.error("Error loading images:", err));
-}
+          imgDiv.appendChild(img);
+          imageContainer.appendChild(imgDiv);
+        });
+      })
+      .catch(err => console.error("Error loading images:", err));
   }
+
+  loadImages();
 });
 
     </script>
