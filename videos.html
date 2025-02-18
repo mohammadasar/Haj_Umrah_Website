@@ -182,9 +182,7 @@ async function fetchVideos() {
       const colDiv = document.createElement("div");
       colDiv.classList.add("col-md-4", "col-12", "mb-3");
 
-      colDiv.setAttribute("data-aos", "fade-up");
-      colDiv.setAttribute("data-aos-duration", "1200");
-      colDiv.setAttribute("data-aos-easing", "linear");
+    
 
       colDiv.innerHTML = `
         <div class="card p-2 shadow-sm">
@@ -204,8 +202,7 @@ async function fetchVideos() {
 }
 
 
-// Initialize AOS
-AOS.init();
+
 
 // Call the fetchVideos when the document is loaded
 document.addEventListener("DOMContentLoaded", fetchVideos);
