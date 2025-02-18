@@ -149,6 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // videopanel
+const BASE_URL = "https://haj-umrah-backend.onrender.com"; 
 
 async function fetchVideos() {
   try {
