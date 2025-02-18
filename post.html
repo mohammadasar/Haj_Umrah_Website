@@ -251,6 +251,11 @@ button:hover {
           img.alt = "Uploaded Image";
           img.classList.add("image");
 
+          // Add AOS animation attributes
+      img.setAttribute("data-aos", "fade-up");
+      img.setAttribute("data-aos-duration", "1200");
+      img.setAttribute("data-aos-easing", "linear");
+
           imgDiv.appendChild(img);
           imageContainer.appendChild(imgDiv);
         });
