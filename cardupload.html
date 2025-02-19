@@ -71,167 +71,122 @@
     <div id="cardsList" class="row"></div>
 
     <script>
-       const form = document.getElementById('cardForm');
-const cardsList = document.getElementById('cardsList');
-const loader = document.getElementById('loader'); // Get loader element
+        const form = document.getElementById('cardForm');
+        const cardsList = document.getElementById('cardsList');
 
-// Function to show loader
-function showLoader() {
-    loader.style.display = 'block';
-}
-
-// Function to hide loader
-function hideLoader() {
-    loader.style.display = 'none';
-}
-
-// Fetch all cards
-async function fetchCards() {
-    showLoader();
-    try {
-        const response = await fetch('https://haj-umrah-backend.onrender.com/cards/all');
-        const cards = await response.json();
-        cardsList.innerHTML = '';
-        console.log(cards);
-
-        cards.forEach(card => {
-            const cardElement = document.createElement('div');
-            cardElement.classList.add('col-md-4', 'mb-3');
-            cardElement.innerHTML = `
-                <div class="card p-3">
-                    <img src="${card.image}" class="card-img-top" alt="Card Image">
-                    <div class="card-body">
-                        <h5>${card.packageName}</h5>
-                        <p>${card.price}</p>
-                        <p>${card.start}</p>
-                        <p>${card.hotel}</p>
-                        <p>${card.ticket}</p>
-                        <p>${card.transport}</p>
-                        <p>${card.meals}</p>
-                        <p>${card.ziyarathTour}</p>
-                        <p>${card.guide}</p>
-                        <p>${card.kit}</p>
-                        <p>${card.assist}</p>
-                        <p>${card.visa}</p>
-                        <button class="btn btn-warning btn-sm" onclick="editCard('${card.id}')">Edit</button>
-                        <button class="btn btn-danger btn-sm" onclick="deleteCard('${card.id}')">Delete</button>
+        async function fetchCards() {
+            const response = await fetch('https://haj-umrah-backend.onrender.com/cards/all');
+            const cards = await response.json();
+            cardsList.innerHTML = '';
+            console.log(cards)
+            
+            cards.forEach(card => {
+                const cardElement = document.createElement('div');
+                cardElement.classList.add('col-md-4', 'mb-3');
+                cardElement.innerHTML = `
+                    <div class="card p-3">
+                        <img src="${card.image}" class="card-img-top" alt="Card Image">
+                        <div class="card-body">
+                            <h5>${card.packageName}</h5>
+                            <p>${card.price}</p>
+                            <p>${card.start}</p>
+                            <p>${card.hotel}</p>
+                            <p>${card.ticket}</p>
+                            <p>${card.transport}</p>
+                            <p>${card.meals}</p>
+                            <p>${card.ziyarathTour}</p>
+                            <p>${card.guide}</p>
+                            <p>${card.kit}</p>
+                            <p>${card.assist}</p>
+                            <p>${card.visa}</p>
+                            <button class="btn btn-warning btn-sm" onclick="editCard('${card.id}')">Edit</button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteCard('${card.id}')">Delete</button>
+                        </div>
                     </div>
-                </div>
-            `;
-            cardsList.appendChild(cardElement);
-        });
-    } catch (error) {
-        alert("Error fetching cards!");
-    } finally {
-        hideLoader();
-    }
-}
-
-// Handle form submission (Add or Update card)
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    showLoader();
-
-    const formData = new FormData();
-    formData.append('image', document.getElementById('image').files[0]);
-    formData.append('packageName', document.getElementById('packageName').value);
-    formData.append('price', document.getElementById('price').value);
-    formData.append('start', document.getElementById('start').value);
-    formData.append('hotel', document.getElementById('hotel').value);
-    formData.append('ticket', document.getElementById('ticket').value);
-    formData.append('transport', document.getElementById('transport').value);
-    formData.append('meals', document.getElementById('meals').value);
-    formData.append('ziyarathTour', document.getElementById('ziyarathTour').value);
-    formData.append('guide', document.getElementById('guide').value);
-    formData.append('kit', document.getElementById('kit').value);
-    formData.append('assist', document.getElementById('assist').value);
-    formData.append('visa', document.getElementById('visa').value);
-
-    const cardId = document.getElementById('cardId').value;
-    let response;
-
-    try {
-        if (cardId) {
-            response = await fetch(`https://haj-umrah-backend.onrender.com/cards/update/${cardId}`, {
-                method: 'PUT',
-                body: formData
-            });
-        } else {
-            response = await fetch('https://haj-umrah-backend.onrender.com/cards/add', {
-                method: 'POST',
-                body: formData
+                `;
+                cardsList.appendChild(cardElement);
             });
         }
 
-        if (response.ok) {
-            alert(cardId ? 'Card updated successfully!' : 'Card uploaded successfully!');
-            form.reset();
-            document.getElementById('cardId').value = '';
-            fetchCards();
-        } else {
-            alert('Error saving card!');
-        }
-    } catch (error) {
-        alert('An error occurred while saving the card.');
-    } finally {
-        hideLoader();
-    }
-});
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData();
+            formData.append('image',  document.getElementById('image').files[0]);
+            formData.append('packageName', document.getElementById('packageName').value);
+            formData.append('price', document.getElementById('price').value);
+            formData.append('start', document.getElementById('start').value);
+            formData.append('hotel', document.getElementById('hotel').value);
+            formData.append('ticket', document.getElementById('ticket').value);
+            formData.append('transport', document.getElementById('transport').value);
+            formData.append('meals', document.getElementById('meals').value);
+            formData.append('ziyarathTour', document.getElementById('ziyarathTour').value);
+            formData.append('guide', document.getElementById('guide').value);
+            formData.append('kit', document.getElementById('kit').value);
+            formData.append('assist', document.getElementById('assist').value);
+            formData.append('visa', document.getElementById('visa').value);
 
-// Edit a card
-async function editCard(id) {
-    showLoader();
-    try {
-        const response = await fetch(`https://haj-umrah-backend.onrender.com/cards/${id}`);
-        const card = await response.json();
-        document.getElementById('cardId').value = card.id;
-        document.getElementById('packageName').value = card.packageName;
-        document.getElementById('price').value = card.price;
-        document.getElementById('start').value = card.start;
-        document.getElementById('hotel').value = card.hotel;
-        document.getElementById('ticket').value = card.ticket;
-        document.getElementById('transport').value = card.transport;
-        document.getElementById('meals').value = card.meals;
-        document.getElementById('ziyarathTour').value = card.ziyarathTour;
-        document.getElementById('guide').value = card.guide;
-        document.getElementById('kit').value = card.kit;
-        document.getElementById('assist').value = card.assist;
-        document.getElementById('visa').value = card.visa;
+            const cardId = document.getElementById('cardId').value;
+            let response;
+            if (cardId) {
+                response = await fetch(`https://haj-umrah-backend.onrender.com/cards/update/${cardId}`, {
+                    method: 'PUT',
+                    body: formData
+                });
+            } else {
+                response = await fetch('https://haj-umrah-backend.onrender.com/cards/add', {
+                    method: 'POST',
+                    body: formData
+                });
+            }
 
-        alert('Now you can edit the card details.');
-        document.getElementById('cardForm').scrollIntoView({ behavior: 'smooth' });
-    } catch (error) {
-        alert('Error fetching card details.');
-    } finally {
-        hideLoader();
-    }
-}
-
-// Delete a card
-async function deleteCard(id) {
-    if (confirm('Are you sure you want to delete this card?')) {
-        showLoader();
-        try {
-            const response = await fetch(`https://haj-umrah-backend.onrender.com/cards/delete/${id}`, {
-                method: 'DELETE'
-            });
             if (response.ok) {
-                alert('Card deleted successfully!');
+                alert(cardId ? 'Card updated successfully!' : 'Card uploaded successfully!');
+                form.reset();
+                document.getElementById('cardId').value = '';
                 fetchCards();
             } else {
-                alert('Error deleting card!');
+                alert('Error saving card!');
             }
-        } catch (error) {
-            alert('Error deleting card.');
-        } finally {
-            hideLoader();
+        });
+
+        async function editCard(id) {
+            const response = await fetch(`https://haj-umrah-backend.onrender.com/cards/${id}`);
+            const card = await response.json();
+            document.getElementById('cardId').value = card.id;
+            document.getElementById('packageName').value = card.packageName;
+            document.getElementById('price').value = card.price;
+            document.getElementById('start').value = card.start;
+            document.getElementById('hotel').value = card.hotel;
+            document.getElementById('ticket').value = card.ticket;
+            document.getElementById('transport').value = card.transport;
+            document.getElementById('meals').value = card.meals;
+            document.getElementById('ziyarathTour').value = card.ziyarathTour;
+            document.getElementById('guide').value = card.guide;
+            document.getElementById('kit').value = card.kit;
+            document.getElementById('assist').value = card.assist;
+            document.getElementById('visa').value = card.visa;
+
+            alert('Now you can edit the card details.');
+
+             // Smooth scroll to the form
+           document.getElementById('cardForm').scrollIntoView({ behavior: 'smooth' });
         }
-    }
-}
 
-// Initial fetch
-fetchCards();
+        async function deleteCard(id) {
+            if (confirm('Are you sure you want to delete this card?')) {
+                const response = await fetch(`https://haj-umrah-backend.onrender.com/cards/delete/${id}`, {
+                    method: 'DELETE'
+                });
+                if (response.ok) {
+                    alert('Card deleted successfully!');
+                    fetchCards();
+                } else {
+                    alert('Error deleting card!');
+                }
+            }
+        }
 
+        fetchCards();
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
