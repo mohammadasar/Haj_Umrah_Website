@@ -128,34 +128,47 @@ button:hover {
     const uploadStatus = document.getElementById('uploadStatus');
     const imageContainer = document.getElementById('imageContainer');
 
-    // Function to upload image
-    function uploadImage() {
-      const file = uploadInput.files[0];
-      if (!file) {
-        uploadStatus.textContent = 'Please select an image first.';
-        return;
+    function showLoading(button, text = "Processing...") {
+  button.innerHTML = `<span class="spinner-border spinner-border-sm"></span> ${text}`;
+  button.disabled = true;
+}
+
+function hideLoading(button, originalText) {
+  button.innerHTML = originalText;
+  button.disabled = false;
+}
+
+// Function to upload image
+function uploadImage() {
+  const file = uploadInput.files[0];
+  const uploadBtn = document.querySelector(".upload-section button");
+
+  if (!file) {
+    uploadStatus.textContent = "Please select an image first.";
+    return;
+  }
+
+  showLoading(uploadBtn, "Uploading...");
+
+  const formData = new FormData();
+  formData.append("image", file);
+
+  fetch(`${API_URL}/upload`, { method: "POST", body: formData })
+    .then(response => response.json())
+    .then(data => {
+      if (data.message === "Upload successful!") {
+        uploadStatus.textContent = "Image uploaded successfully!";
+        loadImages();
+      } else {
+        uploadStatus.textContent = "Upload failed: " + data.message;
       }
+    })
+    .catch(err => {
+      uploadStatus.textContent = "Error: " + err.message;
+    })
+    .finally(() => hideLoading(uploadBtn, "Upload"));
+}
 
-      const formData = new FormData();
-      formData.append('image', file);
-
-      fetch(`${API_URL}/upload`, {
-        method: 'POST',
-        body: formData,
-      })
-        .then(response => response.json())
-        .then(data => {
-          if (data.message === "Upload successful!") {
-            uploadStatus.textContent = 'Image uploaded successfully!';
-            loadImages(); // Reload images
-          } else {
-            uploadStatus.textContent = 'Upload failed: ' + data.message;
-          }
-        })
-        .catch(err => {
-          uploadStatus.textContent = 'Error: ' + err.message;
-        });
-    }
 
     // Function to load all images from the backend
     function loadImages() {
