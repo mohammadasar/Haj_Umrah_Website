@@ -146,8 +146,8 @@ async function fetchVideos() {
       const row = document.createElement("tr");
       row.innerHTML = `
         <td>
-          <video onclick="playFullscreen('${BASE_URL}/${video.url}')" controls>
-            <source src="${BASE_URL}/${video.url}" type="video/mp4">
+          <video onclick="playFullscreen('${video.url}')" controls>
+            <source src="${video.url}" type="video/mp4">
           </video>
         </td>
         <td>
