@@ -220,47 +220,51 @@ function uploadImage() {
     }
 
     // Function to update image
-    function updateImage(imageId, file) {
-      if (!file) {
-        alert('Please select an image to update.');
-        return;
+function updateImage(imageId, file) {
+  if (!file) {
+    alert("Please select an image to update.");
+    return;
+  }
+
+  const updateBtn = document.querySelector("#updateImage + button");
+  showLoading(updateBtn, "Updating...");
+
+  const formData = new FormData();
+  formData.append("image", file);
+
+  fetch(`${API_URL}/update/${imageId}`, { method: "PUT", body: formData })
+    .then(response => response.json())
+    .then(data => {
+      if (data.message === "Image updated successfully!") {
+        loadImages();
+      } else {
+        alert("Update failed: " + data.message);
       }
+    })
+    .catch(err => alert("Error updating image: " + err.message))
+    .finally(() => hideLoading(updateBtn, "Confirm Update"));
+}
 
-      const formData = new FormData();
-      formData.append('image', file);
+// Function to delete image
+function deleteImage(imageId) {
+  if (!confirm("Are you sure you want to delete this image?")) return;
 
-      fetch(`${API_URL}/update/${imageId}`, {
-        method: 'PUT',
-        body: formData,
-      })
-        .then(response => response.json())
-        .then(data => {
-          if (data.message === 'Image updated successfully!') {
-            loadImages(); // Reload images after update
-          } else {
-            alert('Update failed: ' + data.message);
-          }
-        })
-        .catch(err => alert('Error updating image: ' + err.message));
-    }
+  const deleteBtn = document.querySelector(`button[data-id="${imageId}"]`);
+  showLoading(deleteBtn, "Deleting...");
 
-    // Function to delete image by ID
-    function deleteImage(imageId) {
-      if (confirm('Are you sure you want to delete this image?')) {
-        fetch(`${API_URL}/delete/${imageId}`, {
-          method: 'DELETE',
-        })
-          .then(response => response.json())
-          .then(data => {
-            if (data.message === 'Image deleted successfully!') {
-              loadImages(); // Reload images after deletion
-            } else {
-              alert('Delete failed: ' + data.message);
-            }
-          })
-          .catch(err => alert('Error deleting image: ' + err.message));
-    }
-    }
+  fetch(`${API_URL}/delete/${imageId}`, { method: "DELETE" })
+    .then(response => response.json())
+    .then(data => {
+      if (data.message === "Image deleted successfully!") {
+        loadImages();
+      } else {
+        alert("Delete failed: " + data.message);
+      }
+    })
+    .catch(err => alert("Error deleting image: " + err.message))
+    .finally(() => hideLoading(deleteBtn, "Delete"));
+}
+
     // Load images initially
     loadImages();
   </script>
