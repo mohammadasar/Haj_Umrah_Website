@@ -83,20 +83,27 @@ document.addEventListener("DOMContentLoaded", function () {
 // package api connection //for package page code
 async function fetchCards() {
   const cardsList = document.getElementById('cardsList');
-  
-  if (!cardsList) {
-    console.error("Error: Element with ID 'cardsList' not found.");
+  const loader = document.getElementById('loader');
+
+  if (!cardsList || !loader) {
+    console.error("Error: Required elements not found.");
     return;
   }
 
-  cardsList.innerHTML = ''; // Clear existing list
+  // Show loader and clear any previous content
+  loader.style.display = 'flex';
+  cardsList.innerHTML = '';
+
   try {
+    // Wait for 5 seconds before making the API call
+    await new Promise(resolve => setTimeout(resolve, 5000));
+
     const response = await fetch('https://haj-umrah-backend.onrender.com/cards/all');
     if (!response.ok) throw new Error('Failed to fetch cards');
 
     const cards = await response.json();
     console.log("cards=====", cards);
-    
+
     if (cards.length === 0) {
       cardsList.innerHTML = '<p class="text-center text-muted">No packages available.</p>';
       return;
@@ -105,40 +112,46 @@ async function fetchCards() {
     cards.forEach(card => {
       const cardElement = document.createElement('div');
       cardElement.classList.add('col-md-4', 'mb-3');
-       
+
       // Add AOS animation attributes
       cardElement.setAttribute("data-aos", "fade-up");
       cardElement.setAttribute("data-aos-duration", "1900");
       cardElement.setAttribute("data-aos-easing", "linear");
-      
-       
+
       cardElement.innerHTML = `
         <div class="card p-3 shadow-sm">
           <img src="${card.image}" class="card-img-top img-fluid" alt="Package Image">
           <div class="card-body text-start package-cards">
-            <h5 class="card-title ">${card.packageName}</h5>
-            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-tag"></i><p class="card-text"> ${card.price}</p></div>
-            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-calendar-days"></i><p class="card-text"> ${card.start}</p></div>
-            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-hotel"></i><p class="card-text"> ${card.hotel}</p></div>
-            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-ticket"></i><p class="card-text"> ${card.ticket}</p></div>
-            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-id-card"></i><p class="card-text"> ${card.visa}</p></div>
-            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-bus"></i><p class="card-text"> ${card.transport}</p></div>
-            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-utensils"></i><p class="card-text"> ${card.meals}</p></div>
+            <h5 class="card-title">${card.packageName}</h5>
+            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-tag"></i><p class="card-text">${card.price}</p></div>
+            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-calendar-days"></i><p class="card-text">${card.start}</p></div>
+            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-hotel"></i><p class="card-text">${card.hotel}</p></div>
+            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-ticket"></i><p class="card-text">${card.ticket}</p></div>
+            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-id-card"></i><p class="card-text">${card.visa}</p></div>
+            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-bus"></i><p class="card-text">${card.transport}</p></div>
+            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-utensils"></i><p class="card-text">${card.meals}</p></div>
             <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-kaaba"></i><p class="card-text">${card.ziyarathTour}</p></div>
-            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-person-walking "></i><p class="card-text"> ${card.guide}</p></div>
-            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-suitcase"></i><p class="card-text"> ${card.kit}</p></div>
-            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-hands-helping"></i><p class="card-text"> ${card.assist}</p></div>
+            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-person-walking"></i><p class="card-text">${card.guide}</p></div>
+            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-suitcase"></i><p class="card-text">${card.kit}</p></div>
+            <div class="d-flex gap-2 mt-3"><i class="fa-solid fa-hands-helping"></i><p class="card-text">${card.assist}</p></div>
           </div>
           <div class="text-center mt-5 mb-4">
               <a href="#" class="card-btn">CONTACT <i class="bi bi-chevron-right"></i></a>
-             </div>
+          </div>
         </div>
       `;
       cardsList.appendChild(cardElement);
     });
+
+    // Initialize AOS animations after appending the cards
+    AOS.init();
+
   } catch (error) {
     console.error('Error fetching cards:', error);
     cardsList.innerHTML = '<p class="text-danger text-center">Failed to load packages. Please try again later.</p>';
+  } finally {
+    // Hide the loader once processing is complete (after delay and fetch)
+    loader.style.display = 'none';
   }
 }
 

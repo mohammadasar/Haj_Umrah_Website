@@ -20,9 +20,20 @@
         <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Heebo:wght@100..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Gideon+Roman&family=Heebo:wght@100..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
-    
+        <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     
+
+        <style>
+          .loader-container{
+        width: 100%;
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+        </style>
     </head>
 <body>
     <div class="container-fluid d-none d-md-block" id="home">
@@ -121,6 +132,10 @@
     <h2 class="text-center">Videos</h2>
     <div class="row" id="videoGrid"></div> <!-- Video Grid -->
   </div>
+  <div class="loader-container" id="loader">
+
+    <dotlottie-player src="https://lottie.host/a2c62071-c75b-4c0d-b2ab-10e76f7100b2/Ist8rJCvgE.lottie" background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay></dotlottie-player>
+    </div>
     <!-- contact-container -->
     <div class="container-fluid contact-container ">
       <div class="row">
@@ -165,42 +180,56 @@
 
     <script>
       // videopanel
- const BASE_URL = "https://haj-umrah-backend.onrender.com"; 
+      const BASE_URL = "https://haj-umrah-backend.onrender.com"; 
 
 async function fetchVideos() {
   try {
-  const response = await fetch(`${BASE_URL}/api/videos/get`);
-  if (!response.ok) throw new Error(`Error: ${response.status}`);
+    // Show loader
+    const loader = document.getElementById("loader");
+    loader.style.display = "flex";
 
-  const videos = await response.json();
-  console.log(videos);  // Log the response to check the data
-  const videoGrid = document.getElementById("videoGrid");
-  videoGrid.innerHTML = "";
+    // Wait for 5 seconds before making the API call
+    await new Promise(resolve => setTimeout(resolve, 5000));
 
-  videos.forEach(video => {
-    const colDiv = document.createElement("div");
-    colDiv.classList.add("col-md-3", "col-12", "mb-3");
+    const response = await fetch(`${BASE_URL}/api/videos/get`);
+    if (!response.ok) throw new Error(`Error: ${response.status}`);
 
-    colDiv.setAttribute("data-aos", "fade-up");
-    colDiv.setAttribute("data-aos-duration", "1200");
-    colDiv.setAttribute("data-aos-easing", "linear");
+    const videos = await response.json();
+    console.log(videos);  // Log the response to check the data
+    const videoGrid = document.getElementById("videoGrid");
+    videoGrid.innerHTML = "";
 
-    colDiv.innerHTML = `
-      <div class="card p-2 shadow-sm">
-        <video onclick="playFullscreen('${video.url}')" controls style="width: 100%; height: 200px">
-          <source src="${video.url}" type="video/mp4">
-        </video>
-      </div>
-    `;
-    videoGrid.appendChild(colDiv);
-  });
-} catch (error) {
-  console.error("Error fetching videos:", error);  // Log the error for debugging
-  const videoGrid = document.getElementById("videoGrid");
-  videoGrid.innerHTML = "<div class='alert alert-danger'>Error fetching videos. Please try again later.</div>";
+    videos.forEach(video => {
+      const colDiv = document.createElement("div");
+      colDiv.classList.add("col-md-3", "col-12", "mb-3");
+
+      colDiv.setAttribute("data-aos", "fade-up");
+      colDiv.setAttribute("data-aos-duration", "1200");
+      colDiv.setAttribute("data-aos-easing", "linear");
+
+      colDiv.innerHTML = `
+        <div class="card p-2 shadow-sm">
+          <video onclick="playFullscreen('${video.url}')" controls style="width: 100%; height: 200px">
+            <source src="${video.url}" type="video/mp4">
+          </video>
+        </div>
+      `;
+      videoGrid.appendChild(colDiv);
+    });
+
+  } catch (error) {
+    console.error("Error fetching videos:", error);
+    const videoGrid = document.getElementById("videoGrid");
+    videoGrid.innerHTML = "<div class='alert alert-danger'>Error fetching videos. Please try again later.</div>";
+  } finally {
+    // Hide loader after fetching videos
+    const loader = document.getElementById("loader");
+    loader.style.display = "none";
+  }
 }
 
-}
+// Call the fetchVideos when the document is loaded
+document.addEventListener("DOMContentLoaded", fetchVideos);
 
 
 
